@@ -1,9 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import React from "react";
+import AppRoutes from "./routes";
 function App() {
 	return (
 		<div>
-			<Routes />
+			<AppRoutes />
 		</div>
 	);
 }
