@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../assets/styles/login-style.css";
+import "../../assets/styles/styles.css";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -16,7 +16,7 @@ const Login = () => {
 		<div className="container">
 			<div className="form-box">
 				<h2 className="form-title">Logowanie</h2>
-				<form>
+				<form onSubmit={handleSubmit}>
 					<div className="form-control">
 						<label htmlFor="email">Email</label>
 						<input
@@ -33,7 +33,7 @@ const Login = () => {
 							id="password"
 						/>
 					</div>
-					<button type="submit" onSubmit={handleSubmit} className="btn-primary">
+					<button type="submit" className="btn-primary">
 						Zaloguj się
 					</button>
 					<a href="/register" className="link">

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../assets/styles/login-style.css";
+import "../../assets/styles/styles.css";
 
 const Register = () => {
 	const [username, setUsername] = useState("");
