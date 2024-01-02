@@ -16,13 +16,6 @@ const Register = () => {
 			alert("Hasła nie są takie same!");
 			return;
 		}
-		//  try {
-		//    // Wywołaj API do rejestracji
-		//    await axios.post('API_ENDPOINT/register', { username, email, password });
-		//    navigate('/login'); // Przekierowanie do logowania po pomyślnej rejestracji
-		//  } catch (error) {
-		//    // Obsługa błędów
-		//  }
 	};
 
 	return (

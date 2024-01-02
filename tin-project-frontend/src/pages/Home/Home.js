@@ -3,10 +3,12 @@ import "../../assets/styles/styles.css";
 const Home = () => {
 	return (
 		<div className="container">
-			<div className="home-content">
-				<h1>Witaj na Stronie Głównej</h1>
-				<p>To jest strona główna Twojej aplikacji.</p>
-				{}
+			<div className="form-box">
+				<div className="home-content">
+					<h1>Home</h1>
+					<p>Strona glowna</p>
+					{}
+				</div>
 			</div>
 		</div>
 	);
