@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../assets/styles/login-style.css";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -7,44 +8,39 @@ const Login = () => {
 	const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		// Logging logic
+		// e.preventDefault();
+		console.log("Submitted");
 	};
 
 	return (
 		<div className="container">
-			<form onSubmit={handleSubmit}>
-				<h2>Logowanie</h2>
-				<div className="mb-3">
-					<label htmlFor="email" className="form-label">
-						Email
-					</label>
-					<input
-						type="email"
-						className="form-control"
-						id="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</div>
-				<div className="mb-3">
-					<label htmlFor="password" className="form-label">
-						Hasło
-					</label>
-					<input
-						type="password"
-						className="form-control"
-						id="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</div>
-				<button type="submit" className="btn btn-primary">
-					Zaloguj się
-				</button>
-			</form>
+			<div className="form-box">
+				<h2 className="form-title">Logowanie</h2>
+				<form>
+					<div className="form-control">
+						<label htmlFor="email">Email</label>
+						<input
+							type="email"
+							onChange={(e) => setEmail(e.target.value)}
+							id="email"
+						/>
+					</div>
+					<div className="form-control">
+						<label htmlFor="password">Hasło</label>
+						<input
+							type="password"
+							onChange={(e) => setPassword(e.target.value)}
+							id="password"
+						/>
+					</div>
+					<button type="submit" onSubmit={handleSubmit} className="btn-primary">
+						Zaloguj się
+					</button>
+					<a href="/register" className="link">
+						Nie masz konta? Zarejestruj się
+					</a>
+				</form>
+			</div>
 		</div>
 	);
 };

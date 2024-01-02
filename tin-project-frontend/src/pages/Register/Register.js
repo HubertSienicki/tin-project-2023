@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../assets/styles/login-style.css";
 
 const Register = () => {
 	const [username, setUsername] = useState("");
@@ -26,64 +27,53 @@ const Register = () => {
 
 	return (
 		<div className="container">
-			<form onSubmit={handleSubmit}>
-				<h2>Rejestracja</h2>
-				<div className="mb-3">
-					<label htmlFor="username" className="form-label">
-						Nazwa użytkownika
-					</label>
-					<input
-						type="text"
-						className="form-control"
-						id="username"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</div>
-				<div className="mb-3">
-					<label htmlFor="email" className="form-label">
-						Email
-					</label>
-					<input
-						type="email"
-						className="form-control"
-						id="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</div>
-				<div className="mb-3">
-					<label htmlFor="password" className="form-label">
-						Hasło
-					</label>
-					<input
-						type="password"
-						className="form-control"
-						id="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</div>
-				<div className="mb-3">
-					<label htmlFor="confirmPassword" className="form-label">
-						Potwierdź hasło
-					</label>
-					<input
-						type="password"
-						className="form-control"
-						id="confirmPassword"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-					/>
-				</div>
-				<button type="submit" className="btn btn-primary">
-					Zarejestruj się
-				</button>
-			</form>
+			<div className="form-box">
+				<h2 className="form-title">Rejestracja</h2>
+				<form onSubmit={handleSubmit}>
+					<div className="form-control">
+						<label htmlFor="username">Nazwa użytkownika</label>
+						<input
+							type="text"
+							id="username"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+						/>
+					</div>
+					<div className="form-control">
+						<label htmlFor="email">Email</label>
+						<input
+							type="email"
+							id="email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
+					<div className="form-control">
+						<label htmlFor="password">Hasło</label>
+						<input
+							type="password"
+							id="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+					<div className="form-control">
+						<label htmlFor="confirmPassword">Potwierdź hasło</label>
+						<input
+							type="password"
+							id="confirmPassword"
+							value={confirmPassword}
+							onChange={(e) => setConfirmPassword(e.target.value)}
+						/>
+					</div>
+					<button type="submit" className="btn-primary">
+						Zarejestruj się
+					</button>
+					<a href="/login" className="link">
+						Masz już konto? Zaloguj się
+					</a>
+				</form>
+			</div>
 		</div>
 	);
 };
