@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using UserService.Model;
 using UserService.Model.DTOs;
 using UserService.Repository.Interfaces;
 
 namespace UserService.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 [ApiController]
 [Route("[controller]")]
