@@ -4,6 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 using UserService.AutoMapper;
 using UserService.Repository;
 using UserService.Repository.Interfaces;
+using UserService.Services;
+using UserService.Services.Interfaces;
+using UserService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +17,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IUserService, UserService.Services.UserService>();
 builder.Services.AddAutoMapper(typeof(UserProfile));
 
 // Adding JWT authentication to the service
