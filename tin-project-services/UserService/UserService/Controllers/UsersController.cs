@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using UserService.Model;
 using UserService.Model.DTOs;
 using UserService.Repository.Interfaces;
 using UserService.Services.Interfaces;
 
 namespace UserService.Controllers;
-using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
 [Route("[controller]")]
@@ -16,7 +16,8 @@ public class UsersController : ControllerBase
     private readonly ITokenService _tokenService;
     private readonly IMapper _mapper;
 
-    public UsersController(IUserRepository userRepository, IUserService userService, ITokenService tokenService, IMapper mapper)
+    public UsersController(IUserRepository userRepository, IUserService userService, ITokenService tokenService,
+        IMapper mapper)
     {
         _userRepository = userRepository;
         _userService = userService;
@@ -36,15 +37,12 @@ public class UsersController : ControllerBase
 
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
-    {   
-        var user = await _userService.Authenticate(loginModel.username, loginModel.password)!;
+    {
+        var user = await _userService.Authenticate(loginModel.Username, loginModel.Password)!;
 
-        if (user == null)
-        {
-            return Unauthorized();
-        }
+        if (user == null) return Unauthorized();
 
         var token = _tokenService.GenerateJwtToken(user);
-        return Ok(new {token});
+        return Ok(new { token });
     }
 }

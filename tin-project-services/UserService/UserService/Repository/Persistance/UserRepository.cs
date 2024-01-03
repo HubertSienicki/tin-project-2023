@@ -1,9 +1,5 @@
-﻿using System.Security.Cryptography;
-using System.Text;
-using AutoMapper;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using UserService.Model;
-using UserService.Model.DTOs;
 using UserService.Repository.Interfaces;
 
 namespace UserService.Repository;
@@ -94,6 +90,7 @@ public class UserRepository : IUserRepository
         {
             Console.WriteLine(e.Message);
         }
+
         return null;
     }
 }

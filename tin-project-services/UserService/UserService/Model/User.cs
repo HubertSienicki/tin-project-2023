@@ -6,7 +6,7 @@ public class User
     public string Username { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
-    
+
     public int RoleId { get; set; } // foreign key
-    public Role Role { get; set; }  // routing
+    public Role Role { get; set; } // routing
 }

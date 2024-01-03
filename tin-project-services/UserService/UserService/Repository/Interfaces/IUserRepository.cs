@@ -1,5 +1,4 @@
 ﻿using UserService.Model;
-using UserService.Model.DTOs;
 
 namespace UserService.Repository.Interfaces;
 

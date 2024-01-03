@@ -21,18 +21,18 @@ public class TokenService : ITokenService
         //Generate security credentials for jwt
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"] ?? string.Empty));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
-        
+
         var claims = new List<Claim>
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-            new Claim(ClaimTypes.Role, user.Role.Name) //Role here as claim
+            new(JwtRegisteredClaimNames.Sub, user.Username),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new(ClaimTypes.Role, user.Role.Name) //Role here as claim
         };
 
         var token = new JwtSecurityToken(
-            issuer: _configuration["Jwt:Issuer"],
-            audience: _configuration["Jwt:Audience"],
-            claims: claims,
+            _configuration["Jwt:Issuer"],
+            _configuration["Jwt:Audience"],
+            claims,
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: credentials
         );

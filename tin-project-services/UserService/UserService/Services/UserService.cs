@@ -9,7 +9,7 @@ namespace UserService.Services;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
-    
+
 
     public UserService(IUserRepository userRepository)
     {
@@ -21,9 +21,7 @@ public class UserService : IUserService
         var user = _userRepository.GetByUsername(username);
 
         if (user.Result?.Password != null && ValidatePassword(password, user.Result.Password))
-        {
             return await user ?? throw new InvalidOperationException();
-        }
 
         return null;
     }
