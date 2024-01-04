@@ -38,6 +38,7 @@ public class UsersController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
     {
+        
         var user = await _userService.Authenticate(loginModel.Username, loginModel.Password)!;
 
         if (user == null) return Unauthorized();
@@ -51,7 +52,7 @@ public class UsersController : ControllerBase
     {
         var salt = _userService.HashPassword(registerModel);
         
-        // map user from RegisterModel
+        // map UserPost from RegisterModel
         var user = _mapper.Map<UserPost>(registerModel);
 
         // add new user

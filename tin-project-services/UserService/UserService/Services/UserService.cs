@@ -19,8 +19,9 @@ public class UserService : IUserService
     public async Task<UserLogon?> Authenticate(string username, string password)
     {
         var user = _userRepository.GetByUsername(username);
-        var saltedPassword = password + user.Result?.Salt;
-
+        var saltedPassword = password + user.Result?.Salt; // salt incoming password
+        
+        // when user has password and it validates return user
         if (user.Result?.Password != null && ValidatePassword(saltedPassword, user.Result.Password))
             return await user ?? throw new InvalidOperationException();
 
@@ -54,6 +55,9 @@ public class UserService : IUserService
         return salt;
     }
 
+    /***
+     * Random salt generation
+     */
     private static string GenerateSalt()
     {
         var randomBytes = new byte[15];
