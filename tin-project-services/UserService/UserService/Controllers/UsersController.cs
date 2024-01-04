@@ -45,4 +45,19 @@ public class UsersController : ControllerBase
         var token = _tokenService.GenerateJwtToken(user);
         return Ok(new { token });
     }
+
+    [HttpPost("register")]
+    public Task<IActionResult> Register([FromBody] RegisterModel registerModel)
+    {
+        var salt = _userService.HashPassword(registerModel);
+        
+        // map user from RegisterModel
+        var user = _mapper.Map<UserPost>(registerModel);
+
+        // add new user
+        var actionResult = _userRepository.AddNewUser(user, salt);
+
+        // return result
+        return actionResult.Result == 1 ? Task.FromResult<IActionResult>(Ok(user)) : Task.FromResult<IActionResult>(BadRequest());
+    }
 }

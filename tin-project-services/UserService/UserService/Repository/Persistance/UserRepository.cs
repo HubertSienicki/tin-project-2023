@@ -1,5 +1,7 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.AspNetCore.Authorization;
+using MySql.Data.MySqlClient;
 using UserService.Model;
+using UserService.Model.DTOs;
 using UserService.Repository.Interfaces;
 
 namespace UserService.Repository;
@@ -13,7 +15,6 @@ public class UserRepository : IUserRepository
     {
         _configuration = configuration;
     }
-
     public async Task<User?>? GetUserById(int id)
     {
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
@@ -37,6 +38,7 @@ public class UserRepository : IUserRepository
                     Username = reader.GetString(reader.GetOrdinal("username")),
                     Email = reader.GetString(reader.GetOrdinal("Email")),
                     Password = reader.GetString(reader.GetOrdinal("password")),
+                    Salt = reader.GetString(reader.GetOrdinal("password_salt")),
                     RoleId = reader.GetInt32(reader.GetOrdinal("RoleId")),
                     Role = new Role
                     {
@@ -92,5 +94,27 @@ public class UserRepository : IUserRepository
         }
 
         return null;
+    }
+
+    public async Task<int> AddNewUser(UserPost userPost, string passwordSalt)
+    {
+        await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+        try
+        {
+            connection.Open();
+
+            await using var command = connection.CreateCommand();
+            command.CommandText =
+                $"INSERT INTO Users (username, password, email, role_id, password_salt) VALUES(\'{userPost.Username}\', \'{userPost.Password}\', \'{userPost.Email}\', \'{userPost.RoleId}\', \'{passwordSalt}\')";
+            var modified = await command.ExecuteNonQueryAsync();
+
+            return modified;
+            
+        }catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        
+        return 0;
     }
 }
