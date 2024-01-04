@@ -38,7 +38,6 @@ public class UsersController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
     {
-        
         var user = await _userService.Authenticate(loginModel.Username, loginModel.Password)!;
 
         if (user == null) return Unauthorized();
@@ -51,7 +50,7 @@ public class UsersController : ControllerBase
     public Task<IActionResult> Register([FromBody] RegisterModel registerModel)
     {
         var salt = _userService.HashPassword(registerModel);
-        
+
         // map UserPost from RegisterModel
         var user = _mapper.Map<UserPost>(registerModel);
 
@@ -59,6 +58,8 @@ public class UsersController : ControllerBase
         var actionResult = _userRepository.AddNewUser(user, salt);
 
         // return result
-        return actionResult.Result == 1 ? Task.FromResult<IActionResult>(Ok(user)) : Task.FromResult<IActionResult>(BadRequest());
+        return actionResult.Result == 1
+            ? Task.FromResult<IActionResult>(Ok(user))
+            : Task.FromResult<IActionResult>(BadRequest());
     }
 }

@@ -2,7 +2,6 @@
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using UserService.Model;
 using UserService.Model.DTOs;
 using UserService.Services.Interfaces;
 
@@ -22,7 +21,7 @@ public class TokenService : ITokenService
         //Generate security credentials for jwt
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"] ?? string.Empty));
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
-        
+
         //Add custom claims
         var claims = new List<Claim>
         {
@@ -30,7 +29,7 @@ public class TokenService : ITokenService
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new(ClaimTypes.Role, user.Role.Name) //Role here as claim
         };
-        
+
         // Create a new token from service configuration
         var token = new JwtSecurityToken(
             _configuration["Jwt:Issuer"],
@@ -39,7 +38,7 @@ public class TokenService : ITokenService
             expires: DateTime.Now.AddMinutes(30),
             signingCredentials: credentials
         );
-        
+
         // Issue a new token
         return new JwtSecurityTokenHandler().WriteToken(token);
     }

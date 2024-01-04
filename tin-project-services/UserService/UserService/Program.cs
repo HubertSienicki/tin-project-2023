@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using UserService.AutoMapper;
 using UserService.Repository;
 using UserService.Repository.Interfaces;
+using UserService.Repository.Persistance;
 using UserService.Services;
 using UserService.Services.Interfaces;
 using UserService.Services;

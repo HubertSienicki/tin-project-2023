@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using UserService.Model;
 using UserService.Model.DTOs;
 using UserService.Repository.Interfaces;
 
-namespace UserService.Repository;
+namespace UserService.Repository.Persistance;
 
 public class UserRepository : IUserRepository
 {
@@ -15,6 +14,7 @@ public class UserRepository : IUserRepository
     {
         _configuration = configuration;
     }
+
     public async Task<User?>? GetUserById(int id)
     {
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
@@ -25,7 +25,7 @@ public class UserRepository : IUserRepository
 
             await using var command = connection.CreateCommand();
             command.CommandText =
-                $"SELECT u1.Id, u1.username, u1.Email, u1.password, r1.roleId as RoleId, r1.Name as RoleName FROM Users u1 JOIN Roles r1 ON r1.roleId = u1.role_id WHERE u1.Id ={id}";
+                $"SELECT u1.Id, u1.username, u1.Email, u1.password, u1.password_salt, r1.roleId as RoleId, r1.Name as RoleName FROM Users u1 JOIN Roles r1 ON r1.roleId = u1.role_id WHERE u1.Id = {id}";
 
             Console.WriteLine(command.CommandText);
 
@@ -109,12 +109,12 @@ public class UserRepository : IUserRepository
             var modified = await command.ExecuteNonQueryAsync();
 
             return modified;
-            
-        }catch (Exception e)
+        }
+        catch (Exception e)
         {
             Console.WriteLine(e.Message);
         }
-        
+
         return 0;
     }
 }

@@ -10,7 +10,7 @@ namespace UserService.Services;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
-    
+
     public UserService(IUserRepository userRepository)
     {
         _userRepository = userRepository;
@@ -20,7 +20,7 @@ public class UserService : IUserService
     {
         var user = _userRepository.GetByUsername(username);
         var saltedPassword = password + user.Result?.Salt; // salt incoming password
-        
+
         // when user has password and it validates return user
         if (user.Result?.Password != null && ValidatePassword(saltedPassword, user.Result.Password))
             return await user ?? throw new InvalidOperationException();
@@ -45,7 +45,7 @@ public class UserService : IUserService
         var salt = GenerateSalt();
 
         var saltedUserPassword = password + salt;
-        
+
         // hash incomming password
         var hashBytes = SHA256.HashData(Encoding.UTF8.GetBytes(saltedUserPassword));
         var hashString = BitConverter.ToString(hashBytes).Replace("-", "").ToLower();
@@ -65,6 +65,7 @@ public class UserService : IUserService
         {
             rng.GetBytes(randomBytes);
         }
+
         return Convert.ToBase64String(randomBytes);
     }
 }
