@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using UserService.Model;
+using UserService.Model.DTOs;
 using UserService.Services.Interfaces;
 
 namespace UserService.Services;
@@ -16,7 +17,7 @@ public class TokenService : ITokenService
         _configuration = configuration;
     }
 
-    public string GenerateJwtToken(User user)
+    public string GenerateJwtToken(UserLogon user)
     {
         //Generate security credentials for jwt
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"] ?? string.Empty));

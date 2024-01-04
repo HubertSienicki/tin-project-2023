@@ -1,8 +1,9 @@
 ﻿using UserService.Model;
+using UserService.Model.DTOs;
 
 namespace UserService.Services.Interfaces;
 
 public interface ITokenService
 {
-    public string GenerateJwtToken(User user);
+    public string GenerateJwtToken(UserLogon user);
 }

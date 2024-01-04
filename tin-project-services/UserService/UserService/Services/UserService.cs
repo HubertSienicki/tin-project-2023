@@ -16,11 +16,12 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public async Task<User?> Authenticate(string username, string password)
+    public async Task<UserLogon?> Authenticate(string username, string password)
     {
         var user = _userRepository.GetByUsername(username);
+        var saltedPassword = password + user.Result?.Salt;
 
-        if (user.Result?.Password != null && ValidatePassword(password, user.Result.Password))
+        if (user.Result?.Password != null && ValidatePassword(saltedPassword, user.Result.Password))
             return await user ?? throw new InvalidOperationException();
 
         return null;
