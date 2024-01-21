@@ -104,4 +104,28 @@ public class ProductRepository : IProductRepository
         }
         return null;
     }
+
+    public async Task<Product?> UpdateProduct(Product? product)
+    {
+        await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+        try
+        {
+            connection.Open();
+
+            await using var command = connection.CreateCommand();
+            if (product != null)
+            {
+                command.CommandText =
+                    $"UPDATE Products SET name = '{product?.Name}', price = {product!.Price} WHERE id = {product.Id}";
+                await command.ExecuteNonQueryAsync();
+                return product;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+
+        return null!;
+    }
 }

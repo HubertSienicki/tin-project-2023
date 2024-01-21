@@ -49,4 +49,15 @@ public class ProductController : ControllerBase
         var productDto = _mapper.Map<ProductGet>(addedProduct);
         return Ok(productDto);
     }
+    
+    [HttpPut]
+    public async Task<IActionResult> UpdateProduct(ProductPut productPut)
+    {
+        var product = _mapper.Map<Product>(productPut);
+        var updatedProduct = await _productRepository.UpdateProduct(product);
+        if (updatedProduct == null) return BadRequest("Product not updated");
+
+        var productDto = _mapper.Map<ProductGet>(updatedProduct);
+        return Ok(productDto);
+    }
 }

@@ -10,5 +10,6 @@ public class MapperProfile : Profile
     {
         CreateMap<Product, ProductGet>();
         CreateMap<ProductPost, Product>();
+        CreateMap<ProductPut, Product>();
     }
 }
