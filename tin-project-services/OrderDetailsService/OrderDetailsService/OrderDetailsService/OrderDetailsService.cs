@@ -10,7 +10,8 @@ namespace OrderDetailsService.OrderDetailsService;
 
 public class OrderDetailsService : IOrderDetailsService
 {
-    public Tuple<bool, string> ValidateJsonSchema(OrderDetailsPost orderDetailsPost, string schemaPrefix)
+
+    public Tuple<bool, string> ValidateJsonSchema(object value, string schemaPrefix)
     {
         var jsonSchema = ReadSchema(schemaPrefix);
 
@@ -20,7 +21,7 @@ public class OrderDetailsService : IOrderDetailsService
             ContractResolver = new CamelCasePropertyNamesContractResolver()
         };
 
-        var json = JsonConvert.SerializeObject(orderDetailsPost, settings);
+        var json = JsonConvert.SerializeObject(value, settings);
         Console.WriteLine(json);
         var jsonObject = JObject.Parse(json);
         var schema = JSchema.Parse(jsonSchema);

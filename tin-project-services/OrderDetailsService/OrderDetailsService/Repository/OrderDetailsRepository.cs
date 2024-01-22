@@ -138,14 +138,52 @@ public class OrderDetailsRepository : IOrderDetailsRepository
             throw;
         }
     }
-
-    public Task<OrderDetailsGet?> UpdateOrderDetailsAsync(int id, OrderDetailsPost orderDetailsPost)
+    
+    public async Task<OrderDetailsGet?> UpdateOrderDetailsAsync(int orderId, int productId, OrderDetailsPut orderDetailsPut)
     {
-        throw new NotImplementedException();
+        await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+
+        try
+        {
+            await connection.OpenAsync();
+            const string sql = "UPDATE OrderDetails SET quantity = @Quantity, additional_column = @AdditionalColumn WHERE order_id = @Id and product_id = @ProductId";
+            var command = new MySqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@Id", orderId);
+            command.Parameters.AddWithValue("@ProductId", productId);
+            command.Parameters.AddWithValue("@Quantity", orderDetailsPut.Quantity);
+            command.Parameters.AddWithValue("@AdditionalColumn", orderDetailsPut.AdditionalColumn);
+            await command.ExecuteNonQueryAsync();
+            return new OrderDetailsGet
+            {
+                OrderId = orderId,
+                ProductId = productId,
+                Quantity = orderDetailsPut.Quantity,
+                AdditionalColumn = orderDetailsPut.AdditionalColumn
+            };
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
-    public Task<bool> DeleteOrderDetailsAsync(int id)
-    {
-        throw new NotImplementedException();
+    public async Task<bool> DeleteOrderDetailsAsync(int id)
+    {   
+        await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+        try
+        {
+            await connection.OpenAsync();
+            const string sql = "DELETE FROM OrderDetails WHERE order_id = @Id";
+            var command = new MySqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@Id", id);
+            await command.ExecuteNonQueryAsync();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 }

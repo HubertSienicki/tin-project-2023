@@ -9,29 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/JsonSchemas/POST.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsPost.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/Interfaces/IOrderDetailsService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+    <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="add json validation to order details service">
+      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/JsonSchemas/PUT.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsPut.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/Interfaces/IOrderDetailsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/Interfaces/IOrderDetailsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderDetailsService/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +153,7 @@
       <updated>1705926430652</updated>
       <workItem from="1705926430653" duration="67000" />
       <workItem from="1705926509231" duration="2436000" />
-      <workItem from="1705928963187" duration="2608000" />
+      <workItem from="1705928963187" duration="3872000" />
     </task>
     <task id="LOCAL-00001" summary="add models for orderDetails service">
       <option name="closed" value="true" />
@@ -176,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705927190015</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add json validation to order details service">
+      <option name="closed" value="true" />
+      <created>1705931945028</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705931945028</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +192,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="add models for orderDetails service" />
-    <option name="LAST_COMMIT_MESSAGE" value="add models for orderDetails service" />
+    <MESSAGE value="add json validation to order details service" />
+    <option name="LAST_COMMIT_MESSAGE" value="add json validation to order details service" />
   </component>
 </project>

@@ -4,5 +4,5 @@ namespace OrderDetailsService.OrderDetailsService.Interfaces;
 
 public interface IOrderDetailsService
 {
-    public Tuple<bool, string> ValidateJsonSchema(OrderDetailsPost orderDetailsPost, string schemaPrefix);
+    public Tuple<bool, string> ValidateJsonSchema(object value, string schemaPrefix);
 }

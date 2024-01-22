@@ -11,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrderDetailsRepository, OrderDetailsRepository>();
-builder.Services.AddScoped<IOrderDetailsService, OrderDetailsService.OrderDetailsService.OrderDetailsService>(); // ???
+builder.Services.AddScoped<IOrderDetailsService, OrderDetailsService.OrderDetailsService.OrderDetailsService>(); //???
 
 var app = builder.Build();
 
