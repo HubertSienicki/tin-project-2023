@@ -50,4 +50,10 @@ public class OrderController : ControllerBase
             return BadRequest("Order not created");
         return Ok(createdOrder);
     }
+    
+    [HttpGet("test")]
+    public Task<IActionResult> Test()
+    {
+        return Task.FromResult<IActionResult>(Ok("Test OK"));
+    }
 }
