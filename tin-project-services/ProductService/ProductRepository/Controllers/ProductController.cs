@@ -60,4 +60,10 @@ public class ProductController : ControllerBase
         var productDto = _mapper.Map<ProductGet>(updatedProduct);
         return Ok(productDto);
     }
+    
+    [HttpGet("test")]
+    public IActionResult Test()
+    {
+        return Ok("Test");
+    }
 }
