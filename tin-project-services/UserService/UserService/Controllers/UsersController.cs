@@ -62,4 +62,10 @@ public class UsersController : ControllerBase
             ? Task.FromResult<IActionResult>(Ok(user))
             : Task.FromResult<IActionResult>(BadRequest());
     }
+    
+    [HttpGet("test")]
+    public Task<IActionResult> Test()
+    {
+        return Task.FromResult<IActionResult>(Ok("Test OK"));
+    }
 }

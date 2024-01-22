@@ -9,7 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3e6bb811-0a51-4541-a457-2d04ad1871c4" name="Changes" comment="" />
+    <list default="true" id="3e6bb811-0a51-4541-a457-2d04ad1871c4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ApiGateway/ApiGateway/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ApiGateway/ApiGateway/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductService/ProductRepository/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductService/ProductRepository/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/UserService/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/UserService/appsettings.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -154,6 +165,7 @@
       <updated>1705862803558</updated>
       <workItem from="1705862803560" duration="7128000" />
       <workItem from="1705951281434" duration="207000" />
+      <workItem from="1705954393805" duration="582000" />
     </task>
     <task id="LOCAL-00001" summary="remove and re-add order service">
       <option name="closed" value="true" />

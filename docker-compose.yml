@@ -1,7 +1,7 @@
-version: "3.1"
+version: "3.4"
 
 services:
-  db:
+  db-service:
     image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -14,6 +14,45 @@ services:
       - "3306:3306"
     volumes:
       - mydb:/var/lib/mysql
+
+  api-gateway:
+    build:
+      context: ./tin-project-services/ApiGateway
+      dockerfile: Dockerfile
+    ports:
+      - "7000:80"
+
+  user-service:
+    build:
+      context: ./tin-project-services/UserService
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
+
+  product-service:
+    build:
+      context: ./tin-project-services/ProductService
+      dockerfile: Dockerfile
+    ports:
+      - "5002:80"
+
+  order-service:
+    build:
+      context: ./tin-project-services/OrderService
+      dockerfile: Dockerfile
+    ports:
+      - "5003:80"
+
+  orderdetails-service:
+    build:
+      context: ./tin-project-services/OrderDetailsService
+      dockerfile: Dockerfile
+    ports:
+      - "5004:80"
+
+networks:
+  default:
+    driver: bridge
 
 volumes:
   mydb:
