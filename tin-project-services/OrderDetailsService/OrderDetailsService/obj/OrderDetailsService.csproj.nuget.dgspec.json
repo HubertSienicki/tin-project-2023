@@ -45,6 +45,14 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.5, )"
+            },
+            "Newtonsoft.Json.Schema": {
+              "target": "Package",
+              "version": "[3.0.15, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"

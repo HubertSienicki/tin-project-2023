@@ -1,0 +1,22 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "orderId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "productId": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "quantity": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "additionalColumn": {
+      "type": "string"
+    }
+  },
+  "required": ["orderId", "productId", "quantity"]
+}

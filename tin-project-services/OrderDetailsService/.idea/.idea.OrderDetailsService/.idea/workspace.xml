@@ -5,43 +5,33 @@
     <projectFile profileName="http">OrderDetailsService/OrderDetailsService.csproj</projectFile>
     <projectFile profileName="https">OrderDetailsService/OrderDetailsService.csproj</projectFile>
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/7/a/7a641eecc1a71a4e5fa48efcaebe359e5d49a094" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/7/a/7a641eecc1a71a4e5fa48efcaebe359e5d49a094" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.AssemblyInfo.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.GlobalUsings.g.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.csproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/JsonSchemas/POST.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsPost.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/Interfaces/IOrderDetailsService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/Debug/net7.0/OrderDetailsService.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/OrderDetailsService.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +55,19 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Launch Settings Profile.OrderDetailsService: http.executor": "Debug",
+    ".NET Launch Settings Profile.OrderDetailsService: https.executor": "Run",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -83,7 +81,7 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.OrderDetailsService: http">
+  <component name="RunManager" selected=".NET Launch Settings Profile.OrderDetailsService: https">
     <configuration name="OrderDetailsService: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
@@ -167,15 +165,38 @@
       <option name="presentableId" value="Default" />
       <updated>1705926430652</updated>
       <workItem from="1705926430653" duration="67000" />
-      <workItem from="1705926509231" duration="90000" />
+      <workItem from="1705926509231" duration="2436000" />
+      <workItem from="1705928963187" duration="2608000" />
     </task>
+    <task id="LOCAL-00001" summary="add models for orderDetails service">
+      <option name="closed" value="true" />
+      <created>1705927190015</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1705927190015</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="add models for orderDetails service" />
+    <option name="LAST_COMMIT_MESSAGE" value="add models for orderDetails service" />
   </component>
 </project>

@@ -1,12 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "xQwWCqYqpldy+GZGHBgozQbMX345AbYkw6XHWGqS2SDPlFXLWR6EnRcTassDDEr6gfbz/0cQ0H8zGVFRT1Y7Xg==",
+  "dgSpecHash": "OO5bJEOuBFP/5EFlkjxqvQNyD111GmBSVpU/YBUeeDmN875EJPDKQw0yiFEw7/i10DOrp+CQol3A4Esi3f8ATg==",
   "success": true,
   "projectFilePath": "E:\\Projects\\tin-project-2023\\tin-project-services\\OrderDetailsService\\OrderDetailsService\\OrderDetailsService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kneiv\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "C:\\Users\\kneiv\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\kneiv\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\7.0.1\\microsoft.extensions.logging.abstractions.7.0.1.nupkg.sha512",
     "C:\\Users\\kneiv\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\kneiv\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
+    "C:\\Users\\kneiv\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\kneiv\\.nuget\\packages\\newtonsoft.json.schema\\3.0.15\\newtonsoft.json.schema.3.0.15.nupkg.sha512",
     "C:\\Users\\kneiv\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "C:\\Users\\kneiv\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
     "C:\\Users\\kneiv\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
