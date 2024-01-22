@@ -77,4 +77,10 @@ public class OrderDetailsController : ControllerBase
             ? Task.FromResult<IActionResult>(Ok("Order details deleted"))
             : Task.FromResult<IActionResult>(BadRequest("Order details could not be deleted"));
     }
+    
+    [HttpGet("test")]
+    public Task<IActionResult> Test()
+    {
+        return Task.FromResult<IActionResult>(Ok("Test OK"));
+    }
 }
