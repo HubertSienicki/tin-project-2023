@@ -22,6 +22,17 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserService, UserService.Services.UserService>();
 builder.Services.AddAutoMapper(typeof(UserProfile));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyAllowSpecificOrigins",
+        corsPolicyBuilder =>
+        {
+            corsPolicyBuilder.WithOrigins("http://localhost:3000")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
 // Adding JWT authentication to the service
 builder.Services.AddAuthentication(options =>
 {
@@ -55,5 +66,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("MyAllowSpecificOrigins");
 
 app.Run();

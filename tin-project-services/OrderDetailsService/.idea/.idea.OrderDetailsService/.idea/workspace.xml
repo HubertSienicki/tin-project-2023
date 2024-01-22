@@ -9,16 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="add json validation to order details service">
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/JsonSchemas/PUT.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsPut.cs" afterDir="false" />
+    <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/Interfaces/IOrderDetailsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/Interfaces/IOrderDetailsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +19,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://E:/Projects/tin-project-2023/tin-project-services/OrderDetailsService/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -153,7 +148,7 @@
       <updated>1705926430652</updated>
       <workItem from="1705926430653" duration="67000" />
       <workItem from="1705926509231" duration="2436000" />
-      <workItem from="1705928963187" duration="3872000" />
+      <workItem from="1705928963187" duration="4818000" />
     </task>
     <task id="LOCAL-00001" summary="add models for orderDetails service">
       <option name="closed" value="true" />
@@ -171,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705931945028</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finish order details service">
+      <option name="closed" value="true" />
+      <created>1705933166479</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1705933166479</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +196,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="add models for orderDetails service" />
     <MESSAGE value="add json validation to order details service" />
-    <option name="LAST_COMMIT_MESSAGE" value="add json validation to order details service" />
+    <MESSAGE value="Finish order details service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish order details service" />
   </component>
 </project>
