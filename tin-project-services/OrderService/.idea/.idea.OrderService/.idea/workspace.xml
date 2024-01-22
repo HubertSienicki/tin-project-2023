@@ -9,15 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d74823e-7397-4e0f-9fee-1577ea10669b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProductRepository/AutoMapper/MapperProfile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProductRepository/Controllers/ProductController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProductRepository/Model/DTOs/ProductGet.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProductRepository/Model/Product.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProductRepository/ProductRepository.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProductRepository/Repository/Interfaces/IProductRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ProductRepository/Repository/ProductRepository.cs" afterDir="false" />
+    <list default="true" id="3e6bb811-0a51-4541-a457-2d04ad1871c4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,16 +21,24 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/d47e49e9c1e173ac90821f7e89cc38e710274241/src/Mvc/Mvc.Core/src/Infrastructure/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/aspnetcore/d47e49e9c1e173ac90821f7e89cc38e710274241/src/Mvc/Mvc.Core/src/Infrastructure/ControllerActionInvoker.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/8042d61b17540e49e53569e3728d2faa1c596583/src/libraries/System.Private.CoreLib/src/System/Runtime/CompilerServices/AsyncValueTaskMethodBuilderT.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/8042d61b17540e49e53569e3728d2faa1c596583/src/libraries/System.Private.CoreLib/src/System/Runtime/ExceptionServices/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/AutoMapper/MapperProfile.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/Controllers/ProductController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/Model/DTOs/ProductGet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/Model/DTOs/ProductPost.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/Model/DTOs/ProductPut.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/Model/Product.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/Repository/Interfaces/IProductRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/Repository/ProductRepository.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
+  "associatedIndex": 7
 }]]></component>
-  <component name="ProjectId" id="2bH3Bph6A8LtlqWQfMCUT7vVnap" />
+  <component name="ProjectId" id="2bHCphxs8sv2Bf19O88HpooRxOK" />
   <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -45,10 +46,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.OrderService: http.executor": "Debug",
-    ".NET Launch Settings Profile.OrderService: https.executor": "Run",
+    ".NET Launch Settings Profile.OrderService: http.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -60,7 +61,6 @@
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
-      "sqlserver",
       "mysql"
     ],
     "rider.external.source.directories": [
@@ -70,9 +70,9 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.OrderService: https">
+  <component name="RunManager" selected=".NET Launch Settings Profile.OrderService: http">
     <configuration name="OrderService: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ProductRepository/ProductRepository.csproj" />
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OrderService/OrderService.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
       <option name="LAUNCH_PROFILE_NAME" value="IIS Express" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -87,7 +87,7 @@
       </method>
     </configuration>
     <configuration name="OrderService: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ProductRepository/ProductRepository.csproj" />
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OrderService/OrderService.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
       <option name="LAUNCH_PROFILE_NAME" value="http" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -102,7 +102,7 @@
       </method>
     </configuration>
     <configuration name="OrderService: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/ProductRepository/ProductRepository.csproj" />
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OrderService/OrderService.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
       <option name="LAUNCH_PROFILE_NAME" value="https" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -145,46 +145,66 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6d74823e-7397-4e0f-9fee-1577ea10669b" name="Changes" comment="" />
-      <created>1705858045054</created>
+      <changelist id="3e6bb811-0a51-4541-a457-2d04ad1871c4" name="Changes" comment="" />
+      <created>1705862803558</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1705858045054</updated>
-      <workItem from="1705858046678" duration="2020000" />
+      <updated>1705862803558</updated>
+      <workItem from="1705862803560" duration="7128000" />
     </task>
+    <task id="LOCAL-00001" summary="remove and re-add order service">
+      <option name="closed" value="true" />
+      <created>1705862919813</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1705862919813</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add order service and product service">
+      <option name="closed" value="true" />
+      <created>1705869326166</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1705869326166</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="remove and re-add order service" />
+    <MESSAGE value="add order service" />
+    <MESSAGE value="add order service and product service" />
+    <option name="LAST_COMMIT_MESSAGE" value="add order service and product service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ProductRepository/Controllers/ProductController.cs</url>
-          <line>23</line>
-          <properties documentPath="E:\Projects\tin-project-2023\tin-project-services\OrderService\ProductRepository\Controllers\ProductController.cs" initialLine="24" containingFunctionPresentation="Method 'GetProductById'">
+          <url>file://$PROJECT_DIR$/OrderService/Repository/OrderInterface.cs</url>
+          <line>140</line>
+          <properties documentPath="E:\Projects\tin-project-2023\tin-project-services\OrderService\OrderService\Repository\OrderInterface.cs" initialLine="140" containingFunctionPresentation="Method 'CreateOrder'">
             <startOffsets>
-              <option value="620" />
+              <option value="5179" />
             </startOffsets>
             <endOffsets>
-              <option value="678" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ProductRepository/Program.cs</url>
-          <line>12</line>
-          <properties documentPath="E:\Projects\tin-project-2023\tin-project-services\OrderService\ProductRepository\Program.cs" initialLine="12" containingFunctionPresentation="">
-            <startOffsets>
-              <option value="393" />
-            </startOffsets>
-            <endOffsets>
-              <option value="461" />
+              <option value="5197" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
