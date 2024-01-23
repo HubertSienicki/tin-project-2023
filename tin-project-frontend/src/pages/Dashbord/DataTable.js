@@ -224,7 +224,7 @@ const DataTable = () => {
 					<button
 						onClick={() => {
 							setIsDeleting(true); // Set deletion mode
-							handleDeleteSelected(); // Call the deletion function
+							handleDeleteSelected();
 						}}
 						className="button mt-20"
 						disabled={isDeleting} // Disable the button during deletion

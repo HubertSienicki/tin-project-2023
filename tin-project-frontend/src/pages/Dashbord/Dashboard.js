@@ -11,8 +11,6 @@ const Dashboard = () => {
 					<Link to="/" className="nav-link">
 						Home
 					</Link>{" "}
-					{/* Link to the home page */}
-					{/* Add other navigation links if needed */}
 				</nav>
 				<h2 className="form-title">Order dashboard</h2>
 				<div className="dashboard-content">
