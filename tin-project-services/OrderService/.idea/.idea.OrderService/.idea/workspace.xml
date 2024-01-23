@@ -10,25 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e6bb811-0a51-4541-a457-2d04ad1871c4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/Client.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/Model/Client.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderDelete.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ClientService/ClientService/Controllers/ClientController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ClientService/ClientService/Model/Client.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ClientService/ClientService/Repository/ClientRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ClientService/ClientService/Repository/Interfaces/IClientRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Login/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Controllers/OrderDetailsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Controllers/OrderDetailsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/DTOs/OrderGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/DTOs/OrderGet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Repository/OrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Repository/OrderDetailsRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderService/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Controllers/OrderController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderGet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderCreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderCreate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderService/Repository/Interfaces/IOrderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Repository/Interfaces/IOrderInterface.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderService/Repository/OrderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Repository/OrderInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ProductService/ProductRepository/Model/DTOs/ProductGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ProductService/ProductRepository/Model/DTOs/ProductGet.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +177,8 @@
       <workItem from="1705862803560" duration="7128000" />
       <workItem from="1705951281434" duration="207000" />
       <workItem from="1705954393805" duration="2358000" />
-      <workItem from="1706003258946" duration="6486000" />
+      <workItem from="1706003258946" duration="7133000" />
+      <workItem from="1706021273473" duration="3637000" />
     </task>
     <task id="LOCAL-00001" summary="remove and re-add order service">
       <option name="closed" value="true" />

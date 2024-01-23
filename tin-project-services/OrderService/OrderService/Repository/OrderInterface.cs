@@ -92,7 +92,7 @@ public class OrderInterface : IOrderInterface
             throw;
         }
     }
-    public async Task<OrderCreate> CreateOrder(int userId)
+    public async Task<OrderCreate> CreateOrder(int clientId)
     {
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
         try
@@ -100,9 +100,12 @@ public class OrderInterface : IOrderInterface
             connection.Open();
             await using var command = connection.CreateCommand();
             command.CommandText =
-                $"INSERT INTO Orders (user_id, order_date) VALUES ({userId}, '{DateTime.Now:yyyy-MM-dd}')";
-            await command.ExecuteNonQueryAsync();
-            var orderCreate = new OrderCreate { UserId = userId, OrderDate = DateTime.Now};
+                command.CommandText = $"INSERT INTO Orders (client_id, order_date) VALUES ({clientId}, '{DateTime.Now:yyyy-MM-dd}'); SELECT LAST_INSERT_ID();";
+            
+            // return the id of the newly created order
+            var orderId = Convert.ToInt32(await command.ExecuteScalarAsync());
+            
+            var orderCreate = new OrderCreate { OrderId = orderId, ClientId = clientId, OrderDate = DateTime.Now};
             return orderCreate;
         }
         catch (Exception e)

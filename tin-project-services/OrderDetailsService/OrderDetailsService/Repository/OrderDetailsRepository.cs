@@ -147,7 +147,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
             throw;
         }
     }
-
+    
     public async Task<bool> CreateOrderDetailsAsync(OrderDetailsPost orderDetailsPost)
     {
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));

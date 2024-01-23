@@ -36,14 +36,14 @@ public class OrderController : ControllerBase
     }
     [Authorize(Roles = "User")]
     [HttpPost("create")]
-    public async Task<IActionResult> CreateOrder(int userId)
+    public async Task<IActionResult> CreateOrder(int clientId)
     {
         // Validate the user ID
-        if (userId <= 0) return BadRequest("Invalid User ID.");
+        if (clientId <= 0) return BadRequest("Invalid User ID.");
         
         try
         {
-            var createdOrder = await _orderInterface.CreateOrder(userId);
+            var createdOrder = await _orderInterface.CreateOrder(clientId);
             // If the order could not be created
             if (createdOrder == null) return BadRequest("Order could not be created.");
 

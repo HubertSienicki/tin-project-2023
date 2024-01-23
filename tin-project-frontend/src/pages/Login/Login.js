@@ -61,6 +61,7 @@ const Login = () => {
 					"http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
 				const role = payload[roleKey];
 				navigateBasedOnRole(role);
+				
 			}
 		} catch (error) {
 			console.error("Login error:", error);

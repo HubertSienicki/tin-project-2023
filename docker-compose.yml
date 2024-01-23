@@ -43,6 +43,13 @@ services:
     ports:
       - "5004:80"
 
+  client-service:
+    build:
+      context: ./tin-project-services/ClientService
+      dockerfile: Dockerfile
+    ports:
+      - "5005:80"
+
 networks:
   default:
     driver: bridge

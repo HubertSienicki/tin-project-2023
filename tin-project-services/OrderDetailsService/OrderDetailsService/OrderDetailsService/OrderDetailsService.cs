@@ -40,7 +40,14 @@ public class OrderDetailsService : IOrderDetailsService
 
     private static string ReadSchema(string schemaPrefix)
     {
-        var reader = new StreamReader($"../OrderDetailsService/Model/DTOs/JsonSchemas/{schemaPrefix}.json");
+        var schemaFilePath = Path.Combine("/app", "JsonSchemas", $"{schemaPrefix}.json");
+        if (!File.Exists(schemaFilePath))
+        {
+            Console.WriteLine($"Schema file not found: {schemaFilePath}");
+            // Handle file not found appropriately
+        }
+
+        var reader = new StreamReader(schemaFilePath);
         var sb = new StringBuilder();
         var line = "";
 
@@ -48,4 +55,5 @@ public class OrderDetailsService : IOrderDetailsService
         reader.Close();
         return sb.ToString();
     }
+
 }

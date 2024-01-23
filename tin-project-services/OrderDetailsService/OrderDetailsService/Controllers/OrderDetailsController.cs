@@ -19,7 +19,7 @@ public class OrderDetailsController : ControllerBase
         _orderDetailsRepository = orderDetailsRepository;
         _orderDetailsService = orderDetailsService;
     }
-    
+
     [Authorize(Roles = "Admin")]
     [HttpGet("")]
     public Task<IActionResult> GetOrderDetailsAsync()
@@ -27,7 +27,7 @@ public class OrderDetailsController : ControllerBase
         var orderDetails = _orderDetailsRepository.GetOrderDetailsAsync();
         return Task.FromResult<IActionResult>(Ok(orderDetails.Result));
     }
-    
+
     [Authorize(Roles = "Admin, User")]
     [HttpGet("{orderid:int}")]
     public Task<IActionResult> GetOrderDetailsByIdAsync(int orderid)
@@ -35,6 +35,7 @@ public class OrderDetailsController : ControllerBase
         var orderDetails = _orderDetailsRepository.GetOrderDetailsByIdAsync(orderid);
         return Task.FromResult<IActionResult>(Ok(orderDetails.Result));
     }
+
     [Authorize(Roles = "Admin, User")]
     [HttpGet("product/{productid:int}")]
     public Task<IActionResult> GetOrderDetailsByProductIdAsync(int productid)
@@ -44,8 +45,9 @@ public class OrderDetailsController : ControllerBase
             ? Task.FromResult<IActionResult>(NotFound("No orders found for this given product id"))
             : Task.FromResult<IActionResult>(Ok(orderDetails.Result));
     }
+
     [Authorize(Roles = "Admin, User")]
-    [HttpPost("")]
+    [HttpPost("create")]
     public Task<IActionResult> CreateOrderDetailsAsync([FromBody] OrderDetailsPost orderDetailsPost)
     {
         // validate json schema
@@ -57,7 +59,7 @@ public class OrderDetailsController : ControllerBase
             ? Task.FromResult<IActionResult>(BadRequest("Order details could not be created"))
             : Task.FromResult<IActionResult>(Ok(orderDetails.Result));
     }
-    
+
     [Authorize(Roles = "Admin")]
     [HttpDelete("{id:int}")]
     public Task<IActionResult> DeleteOrderDetailsAsync(int id)
@@ -67,7 +69,7 @@ public class OrderDetailsController : ControllerBase
             ? Task.FromResult<IActionResult>(Ok("Order details deleted"))
             : Task.FromResult<IActionResult>(BadRequest("Order details could not be deleted"));
     }
-    
+
     [HttpGet("test")]
     public Task<IActionResult> Test()
     {
