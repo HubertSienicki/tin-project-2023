@@ -19,7 +19,9 @@ public class TokenService : ITokenService
     public string GenerateJwtToken(UserLogon user)
     {
         //Generate security credentials for jwt
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"] ?? string.Empty));
+        var base64EncodedKey = _configuration["Jwt:Key"] ?? string.Empty;
+        var keyBytes = Convert.FromBase64String(base64EncodedKey);
+        var securityKey = new SymmetricSecurityKey(keyBytes);
         var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
         //Add custom claims

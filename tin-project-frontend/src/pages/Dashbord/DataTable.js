@@ -30,7 +30,7 @@ const DataTable = () => {
 						<th>ID</th>
 						<th>Nazwa</th>
 						<th>Email</th>
-						<th>Akcje</th>
+						<th>Zamówienia</th>
 					</tr>
 				</thead>
 				<tbody>

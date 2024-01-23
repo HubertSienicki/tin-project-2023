@@ -64,6 +64,12 @@ html {
 	flex-direction: column;
 }
 
+.error-message {
+	color: red;
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+
 .record-form label {
 	margin-bottom: 5px;
 }

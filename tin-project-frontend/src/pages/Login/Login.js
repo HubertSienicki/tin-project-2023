@@ -1,15 +1,31 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/styles.css";
 
 const Login = () => {
-	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
 	const navigate = useNavigate();
 
-	const handleSubmit = (e) => {
-		// e.preventDefault();
-		console.log("Submitted");
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		try {
+			const response = await axios.post("http://localhost:5001/Users/login", {
+				username,
+				password,
+			});
+
+			if (response.status === 200) {
+				console.log("Login successful:", response.data);
+				navigate("/dashboard");
+			}
+		} catch (error) {
+			console.error("Login error:", error);
+			setError("Nieprawidłowe dane logowania. Spróbuj ponownie.");
+		}
 	};
 
 	return (
@@ -18,11 +34,11 @@ const Login = () => {
 				<h2 className="form-title">Logowanie</h2>
 				<form onSubmit={handleSubmit}>
 					<div className="form-control">
-						<label htmlFor="email">Email</label>
+						<label htmlFor="Username">Nazwa Użytkownika</label>
 						<input
-							type="email"
-							onChange={(e) => setEmail(e.target.value)}
-							id="email"
+							type="username"
+							onChange={(e) => setUsername(e.target.value)}
+							id="username"
 						/>
 					</div>
 					<div className="form-control">
@@ -33,6 +49,8 @@ const Login = () => {
 							id="password"
 						/>
 					</div>
+
+					{error && <div className="error-message">{error}</div>}
 					<button type="submit" className="btn-primary">
 						Zaloguj się
 					</button>

@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using OrderService.Model.DTOs;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OrderService.Repository.Interfaces;
 
 namespace OrderService.Controllers;
@@ -55,5 +55,11 @@ public class OrderController : ControllerBase
     public Task<IActionResult> Test()
     {
         return Task.FromResult<IActionResult>(Ok("Test OK"));
+    }
+    [Authorize(Roles = "User")]
+    [HttpGet("test/jwt")]
+    public IActionResult TestJWT() 
+    {
+        return Ok("JWT is valid!");
     }
 }
