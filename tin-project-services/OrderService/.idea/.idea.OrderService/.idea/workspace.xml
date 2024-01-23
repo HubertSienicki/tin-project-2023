@@ -10,23 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e6bb811-0a51-4541-a457-2d04ad1871c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/assets/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/assets/styles/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/DataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/DataTable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Register/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Register/Register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/Client.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderService/Model/Client.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderDelete.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ApiGateway/ApiGateway/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../ApiGateway/ApiGateway/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Controllers/OrderDetailsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Controllers/OrderDetailsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/DTOs/OrderGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Model/DTOs/OrderGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Repository/OrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/Repository/OrderDetailsRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderService/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Controllers/OrderController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/OrderService.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/OrderService.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderService/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/UserService/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/UserService/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../UserService/UserService/Services/TokenService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/UserService/Services/TokenService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Model/DTOs/OrderUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/Repository/Interfaces/IOrderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Repository/Interfaces/IOrderInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/Repository/OrderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Repository/OrderInterface.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/AppData/Local/Symbols/src/dotnet/runtime/8042d61b17540e49e53569e3728d2faa1c596583/src/libraries/System.Private.CoreLib/src/System/Runtime/ExceptionServices/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://E:/Projects/tin-project-2023/tin-project-services/OrderService/OrderService/Controllers/OrderController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/Projects/tin-project-2023/tin-project-services/OrderService/OrderService/Controllers/OrderController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/AutoMapper/MapperProfile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../ProductService/ProductRepository/Controllers/ProductController.cs" root0="SKIP_HIGHLIGHTING" />
@@ -173,7 +176,7 @@
       <workItem from="1705862803560" duration="7128000" />
       <workItem from="1705951281434" duration="207000" />
       <workItem from="1705954393805" duration="2358000" />
-      <workItem from="1706003258946" duration="2760000" />
+      <workItem from="1706003258946" duration="6486000" />
     </task>
     <task id="LOCAL-00001" summary="remove and re-add order service">
       <option name="closed" value="true" />
@@ -215,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705956551417</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add JWT token test for endpoint">
+      <option name="closed" value="true" />
+      <created>1706009174665</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706009174665</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +252,7 @@
     <MESSAGE value="add cors and test endpoint" />
     <MESSAGE value="change api port to 5003" />
     <MESSAGE value="add docker configs" />
-    <option name="LAST_COMMIT_MESSAGE" value="add docker configs" />
+    <MESSAGE value="add JWT token test for endpoint" />
+    <option name="LAST_COMMIT_MESSAGE" value="add JWT token test for endpoint" />
   </component>
 </project>

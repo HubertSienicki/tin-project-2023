@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/styles.css";
 
@@ -8,6 +8,37 @@ const Login = () => {
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		const token = sessionStorage.getItem("token");
+		if (token) {
+			const role = decodeToken(token).role;
+			navigateBasedOnRole(role);
+		}
+	}, [navigate]);
+
+	const navigateBasedOnRole = (role) => {
+		if (role === "Admin") {
+			navigate("/dashboard");
+		} else if (role === "User") {
+			navigate("/home");
+		}
+	};
+
+	const decodeToken = (token) => {
+		const base64Url = token.split(".")[1];
+		const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+		const jsonPayload = decodeURIComponent(
+			atob(base64)
+				.split("")
+				.map((c) => {
+					return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+				})
+				.join("")
+		);
+
+		return JSON.parse(jsonPayload);
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -19,8 +50,17 @@ const Login = () => {
 			});
 
 			if (response.status === 200) {
-				console.log("Login successful:", response.data);
-				navigate("/dashboard");
+				sessionStorage.setItem("token", response.data.token); // Save the token to session storage
+				// In your handleSubmit function, after saving the token:
+				const payload = decodeToken(response.data.token);
+				console.log(payload); // Check what's inside the payload
+
+				// Access the role using the full key
+				const roleKey =
+					"http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+				const role = payload[roleKey];
+				console.log("Role:", role); // Check the role
+				navigateBasedOnRole(role);
 			}
 		} catch (error) {
 			console.error("Login error:", error);

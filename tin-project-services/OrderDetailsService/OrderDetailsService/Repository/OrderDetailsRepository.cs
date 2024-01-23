@@ -1,4 +1,5 @@
 ﻿using MySqlConnector;
+using OrderDetailsService.Model;
 using OrderDetailsService.Model.DTOs;
 using OrderDetailsService.Repository.Interfaces;
 
@@ -21,18 +22,31 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         try
         {
             await connection.OpenAsync();
-            const string sql = "SELECT * FROM OrderDetails";
+            const string sql = "SELECT order_id, order_date, product_id, quantity, additional_column, p1.name as product_name, p1.price as product_price, U.Id as client_id, U.first_name as first_name, U.last_name as last_name, U.email as user_email, U.phone as phone FROM OrderDetails od1 JOIN Products p1 ON od1.product_id = p1.id JOIN mydb.Orders O on od1.order_id = O.id join mydb.Clients U on U.id = O.client_id";
             var command = new MySqlCommand(sql, connection);
             var reader = await command.ExecuteReaderAsync();
             var orderDetails = new List<OrderDetailsGet>();
+            
             while (await reader.ReadAsync())
             {
                 var orderDetail = new OrderDetailsGet
                 {
-                    Quantity = reader.GetInt32(2),
-                    AdditionalColumn = reader.GetString(3),
-                    OrderId = reader.GetInt32(0),
-                    ProductId = reader.GetInt32(1)
+                    Quantity = reader.GetInt32(reader.GetOrdinal("quantity")),
+                    Product = await GetProductsForOrder(reader.GetInt32("order_id")),
+                    AdditionalColumn = reader.GetString(reader.GetOrdinal("additional_column")),
+                    Order = new OrderGet
+                    {
+                        Id = reader.GetInt32(reader.GetOrdinal("order_id")),
+                        Date = reader.GetDateTime(reader.GetOrdinal("order_date")),
+                        Client = new Client
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("client_id")),
+                            FirstName = reader.GetString(reader.GetOrdinal("first_name")),
+                            LastName = reader.GetString(reader.GetOrdinal("last_name")),
+                            Email = reader.GetString(reader.GetOrdinal("user_email")),
+                            Phone = reader.GetString(reader.GetOrdinal("phone"))
+                        }
+                    }
                 };
                 orderDetails.Add(orderDetail);
             }
@@ -44,38 +58,50 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         }
     }
 
-    public async Task<IEnumerable<OrderDetailsGet>?> GetOrderDetailsByIdAsync(int orderId)
+    public async Task<OrderDetailsGet> GetOrderDetailsByIdAsync(int orderId)
     {
-        // out of range index
-        if (orderId <= 0) return null;
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
-
         try
         {
-            await connection.OpenAsync();
-            const string sql = "SELECT * FROM OrderDetails WHERE order_id = @orderId";
-            var command = new MySqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@orderId", orderId);
-            var reader = await command.ExecuteReaderAsync();
-            var orderDetails = new List<OrderDetailsGet>();
-            while (await reader.ReadAsync())
+            connection.Open();
+            await using var command = connection.CreateCommand();
+            command.CommandText =
+                $"SELECT * FROM OrderDetails od1 JOIN Products p1 ON od1.product_id = p1.id JOIN mydb.Orders O on od1.order_id = O.id join mydb.Clients U on U.id = O.client_id where od1.order_id = {orderId}";
+
+            Console.WriteLine(command.CommandText);
+
+            await using var reader = await command.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
             {
                 var orderDetail = new OrderDetailsGet
                 {
-                    Quantity = reader.GetInt32(2),
-                    AdditionalColumn = reader.GetString(3),
-                    OrderId = reader.GetInt32(0),
-                    ProductId = reader.GetInt32(1)
+                    Quantity = reader.GetInt32(reader.GetOrdinal("quantity")),
+                    Product = await GetProductsForOrder(orderId),
+                    AdditionalColumn = reader.GetString(reader.GetOrdinal("additional_column")),
+                    Order = new OrderGet
+                    {
+                        Id = reader.GetInt32(reader.GetOrdinal("id")),
+                        Date = reader.GetDateTime(reader.GetOrdinal("order_date")),
+                        Client = new Client
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("id")),
+                            FirstName = reader.GetString(reader.GetOrdinal("first_name")),
+                            LastName = reader.GetString(reader.GetOrdinal("last_name")),
+                            Email = reader.GetString(reader.GetOrdinal("user_email")),
+                            Phone = reader.GetString(reader.GetOrdinal("phone"))
+                        }
+                    }
                 };
-                orderDetails.Add(orderDetail);
+                return orderDetail;
             }
-            return orderDetails;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            Console.WriteLine(e.Message);
             throw;
         }
+
+        return null;
     }
 
     public async Task<IEnumerable<OrderDetailsGet>?> GetOrderDetailsByProductIdAsync(int productId)
@@ -94,10 +120,22 @@ public class OrderDetailsRepository : IOrderDetailsRepository
             {
                 var orderDetail = new OrderDetailsGet
                 {
-                    Quantity = reader.GetInt32(2),
-                    AdditionalColumn = reader.GetString(3),
-                    OrderId = reader.GetInt32(0),
-                    ProductId = reader.GetInt32(1)
+                    Quantity = reader.GetInt32(reader.GetOrdinal("quantity")),
+                    Product = await GetProductsForOrder(reader.GetOrdinal("order_id")),
+                    AdditionalColumn = reader.GetString(reader.GetOrdinal("additional_column")),
+                    Order = new OrderGet
+                    {
+                        Id = reader.GetInt32(reader.GetOrdinal("id")),
+                        Date = reader.GetDateTime(reader.GetOrdinal("order_date")),
+                        Client = new Client
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("id")),
+                            FirstName = reader.GetString(reader.GetOrdinal("first_name")),
+                            LastName = reader.GetString(reader.GetOrdinal("last_name")),
+                            Email = reader.GetString(reader.GetOrdinal("email")),
+                            Phone = reader.GetString(reader.GetOrdinal("phone"))
+                        }
+                    }
                 };
                 orderDetails.Add(orderDetail);
             }
@@ -110,7 +148,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         }
     }
 
-    public async Task<OrderDetailsGet?> CreateOrderDetailsAsync(OrderDetailsPost orderDetailsPost)
+    public async Task<bool> CreateOrderDetailsAsync(OrderDetailsPost orderDetailsPost)
     {
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
 
@@ -124,50 +162,14 @@ public class OrderDetailsRepository : IOrderDetailsRepository
             command.Parameters.AddWithValue("@Quantity", orderDetailsPost.Quantity);
             command.Parameters.AddWithValue("@AdditionalColumn", orderDetailsPost.AdditionalColumn);
             await command.ExecuteNonQueryAsync();
-            return new OrderDetailsGet
-            {
-                OrderId = orderDetailsPost.OrderId,
-                ProductId = orderDetailsPost.ProductId,
-                Quantity = orderDetailsPost.Quantity,
-                AdditionalColumn = orderDetailsPost.AdditionalColumn
-            };
+            return true;
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-            throw;
+            return false;
         }
     }
-    
-    public async Task<OrderDetailsGet?> UpdateOrderDetailsAsync(int orderId, int productId, OrderDetailsPut orderDetailsPut)
-    {
-        await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
-
-        try
-        {
-            await connection.OpenAsync();
-            const string sql = "UPDATE OrderDetails SET quantity = @Quantity, additional_column = @AdditionalColumn WHERE order_id = @Id and product_id = @ProductId";
-            var command = new MySqlCommand(sql, connection);
-            command.Parameters.AddWithValue("@Id", orderId);
-            command.Parameters.AddWithValue("@ProductId", productId);
-            command.Parameters.AddWithValue("@Quantity", orderDetailsPut.Quantity);
-            command.Parameters.AddWithValue("@AdditionalColumn", orderDetailsPut.AdditionalColumn);
-            await command.ExecuteNonQueryAsync();
-            return new OrderDetailsGet
-            {
-                OrderId = orderId,
-                ProductId = productId,
-                Quantity = orderDetailsPut.Quantity,
-                AdditionalColumn = orderDetailsPut.AdditionalColumn
-            };
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-    }
-
     public async Task<bool> DeleteOrderDetailsAsync(int id)
     {   
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
@@ -183,6 +185,40 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         catch (Exception e)
         {
             Console.WriteLine(e);
+            throw;
+        }
+    }
+    
+    private async Task<List<ProductGet>> GetProductsForOrder(int orderId)
+    {
+        await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+        try
+        {
+            connection.Open();
+            await using var command = connection.CreateCommand();
+            command.CommandText =
+                $"SELECT p1.id,p1.price,p1.name FROM OrderDetails od1 JOIN Products p1 ON od1.product_id = p1.id JOIN mydb.Orders O on od1.order_id = O.id join mydb.Clients U on U.id = O.client_id where od1.order_id = {orderId}";
+
+            Console.WriteLine(command.CommandText);
+
+            await using var reader = await command.ExecuteReaderAsync();
+            var products = new List<ProductGet>();
+            while (await reader.ReadAsync())
+            {
+                var product = new ProductGet
+                {
+                    Id = reader.GetInt32(reader.GetOrdinal("id")),
+                    Price = reader.GetDecimal(reader.GetOrdinal("price")),
+                    Name = reader.GetString(reader.GetOrdinal("name"))
+                };
+                products.Add(product);
+            }
+
+            return products;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
             throw;
         }
     }

@@ -10,8 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/OrderDetailsService/Model/Client.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../OrderService/OrderService/Model/Client.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../OrderService/OrderService/Model/DTOs/OrderDelete.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../ApiGateway/.idea/.idea.ApiGateway/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderService/OrderService/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/OrderService/Controllers/OrderController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderService/OrderService/Model/DTOs/OrderGet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/OrderService/Model/DTOs/OrderGet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderService/OrderService/Model/DTOs/OrderUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/OrderService/Model/DTOs/OrderUpdate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderService/OrderService/Repository/Interfaces/IOrderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/OrderService/Repository/Interfaces/IOrderInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderService/OrderService/Repository/OrderInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/OrderService/Repository/OrderInterface.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +81,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.OrderDetailsService: https">
+  <component name="RunManager" selected=".NET Launch Settings Profile.OrderDetailsService: http">
     <configuration name="OrderDetailsService: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net7.0" />
@@ -152,6 +169,7 @@
       <workItem from="1705928963187" duration="4818000" />
       <workItem from="1705951395088" duration="67000" />
       <workItem from="1705954382547" duration="1784000" />
+      <workItem from="1706012468076" duration="1724000" />
     </task>
     <task id="LOCAL-00001" summary="add models for orderDetails service">
       <option name="closed" value="true" />

@@ -15,6 +15,7 @@ public class OrderController : ControllerBase
         _orderInterface = orderInterface;
     }
 
+    [Authorize(Roles = "User")]
     [HttpGet("user/{userId:int}")]
     public async Task<IActionResult> GetUserOrders(int userId)
     {
@@ -24,6 +25,7 @@ public class OrderController : ControllerBase
         return Ok(orders);
     }
 
+    [Authorize(Roles = "User")]
     [HttpGet("{orderId:int}")]
     public async Task<IActionResult> GetOrder(int orderId)
     {
@@ -32,33 +34,60 @@ public class OrderController : ControllerBase
             return NotFound("Order not found");
         return Ok(order);
     }
-
-    [HttpGet("{orderId:int}/details")]
-    public async Task<IActionResult> GetOrderDetails(int orderId)
-    {
-        var orderDetails = await _orderInterface.GetOrderDetails(orderId);
-        if (orderDetails == null)
-            return NotFound("Order not found");
-        return Ok(orderDetails);
-    }
-
+    [Authorize(Roles = "User")]
     [HttpPost("create")]
     public async Task<IActionResult> CreateOrder(int userId)
     {
-        var createdOrder = await _orderInterface.CreateOrder(userId);
-        if (createdOrder == null)
-            return BadRequest("Order not created");
-        return Ok(createdOrder);
+        // Validate the user ID
+        if (userId <= 0) return BadRequest("Invalid User ID.");
+        
+        try
+        {
+            var createdOrder = await _orderInterface.CreateOrder(userId);
+            // If the order could not be created
+            if (createdOrder == null) return BadRequest("Order could not be created.");
+
+            return Ok(createdOrder);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return StatusCode(500, "An error occurred while creating the order.");
+        }
     }
-    
+
+
+    [Authorize(Roles = "User")]
+    [HttpDelete("{orderId:int}")]
+    public async Task<IActionResult> DeleteOrder(int orderId)
+    {
+        try
+        {
+            var orderDeleted = await _orderInterface.DeleteOrder(orderId);
+            if (orderDeleted)
+                return Ok("Order deleted");
+
+            return NotFound($"Order with ID {orderId} not found.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+            return StatusCode(500, "An error occurred while deleting the order.");
+        }
+    }
+
+
+    // TESTS
+
     [HttpGet("test")]
     public Task<IActionResult> Test()
     {
         return Task.FromResult<IActionResult>(Ok("Test OK"));
     }
+
     [Authorize(Roles = "User")]
     [HttpGet("test/jwt")]
-    public IActionResult TestJWT() 
+    public IActionResult TestJWT()
     {
         return Ok("JWT is valid!");
     }

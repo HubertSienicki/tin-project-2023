@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OrderDetailsService.Model.DTOs;
 using OrderDetailsService.OrderDetailsService.Interfaces;
 using OrderDetailsService.Repository.Interfaces;
@@ -6,7 +7,7 @@ using OrderDetailsService.Repository.Interfaces;
 namespace OrderDetailsService.Controllers;
 
 [ApiController]
-[Route("[controller]/orders/details")]
+[Route("Order/details")]
 public class OrderDetailsController : ControllerBase
 {
     private readonly IOrderDetailsRepository _orderDetailsRepository;
@@ -18,23 +19,23 @@ public class OrderDetailsController : ControllerBase
         _orderDetailsRepository = orderDetailsRepository;
         _orderDetailsService = orderDetailsService;
     }
-
+    
+    [Authorize(Roles = "Admin")]
     [HttpGet("")]
     public Task<IActionResult> GetOrderDetailsAsync()
     {
         var orderDetails = _orderDetailsRepository.GetOrderDetailsAsync();
         return Task.FromResult<IActionResult>(Ok(orderDetails.Result));
     }
-
+    
+    [Authorize(Roles = "Admin, User")]
     [HttpGet("{orderid:int}")]
     public Task<IActionResult> GetOrderDetailsByIdAsync(int orderid)
     {
         var orderDetails = _orderDetailsRepository.GetOrderDetailsByIdAsync(orderid);
-        return orderDetails.Result != null && !orderDetails.Result.Any()
-            ? Task.FromResult<IActionResult>(NotFound("No orders found for this given order id"))
-            : Task.FromResult<IActionResult>(Ok(orderDetails.Result));
+        return Task.FromResult<IActionResult>(Ok(orderDetails.Result));
     }
-
+    [Authorize(Roles = "Admin, User")]
     [HttpGet("product/{productid:int}")]
     public Task<IActionResult> GetOrderDetailsByProductIdAsync(int productid)
     {
@@ -43,7 +44,7 @@ public class OrderDetailsController : ControllerBase
             ? Task.FromResult<IActionResult>(NotFound("No orders found for this given product id"))
             : Task.FromResult<IActionResult>(Ok(orderDetails.Result));
     }
-
+    [Authorize(Roles = "Admin, User")]
     [HttpPost("")]
     public Task<IActionResult> CreateOrderDetailsAsync([FromBody] OrderDetailsPost orderDetailsPost)
     {
@@ -57,19 +58,8 @@ public class OrderDetailsController : ControllerBase
             : Task.FromResult<IActionResult>(Ok(orderDetails.Result));
     }
     
-    [HttpPut("{orderId:int}/{productId:int}")]
-    public Task<IActionResult> UpdateOrderDetailsAsync(int orderId, int productId, [FromBody] OrderDetailsPut orderDetailsPut)
-    {
-        // validate json schema
-        var validationResult = _orderDetailsService.ValidateJsonSchema(orderDetailsPut, "PUT");
-        if (!validationResult.Item1) return Task.FromResult<IActionResult>(BadRequest(validationResult.Item2));
-
-        var orderDetails = _orderDetailsRepository.UpdateOrderDetailsAsync(orderId, productId, orderDetailsPut);
-        return orderDetails.Result == null
-            ? Task.FromResult<IActionResult>(BadRequest("Order details could not be updated"))
-            : Task.FromResult<IActionResult>(Ok(orderDetails.Result));
-    }
-    
+    [Authorize(Roles = "Admin")]
+    [HttpDelete("{id:int}")]
     public Task<IActionResult> DeleteOrderDetailsAsync(int id)
     {
         var orderDetails = _orderDetailsRepository.DeleteOrderDetailsAsync(id);

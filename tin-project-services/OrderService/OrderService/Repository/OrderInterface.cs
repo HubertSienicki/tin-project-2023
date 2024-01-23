@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using OrderService.Model;
 using OrderService.Model.DTOs;
 using OrderService.Repository.Interfaces;
 
@@ -13,7 +14,7 @@ public class OrderInterface : IOrderInterface
         _configuration = configuration;
     }
 
-    public async Task<List<OrderGet>> GetUserOrders(int userId)
+    public async Task<List<OrderGet>> GetUserOrders(int clientId)
     {
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
         try
@@ -21,7 +22,7 @@ public class OrderInterface : IOrderInterface
             connection.Open();
             await using var command = connection.CreateCommand();
             command.CommandText =
-                $"SELECT * FROM Orders o1 JOIN Users u1 ON o1.user_id = u1.id WHERE o1.user_id = {userId}";
+                $"SELECT * FROM Orders o1 JOIN Clients u1 ON o1.client_id = u1.id WHERE o1.client_id = {clientId}";
 
             var orders = new List<OrderGet>();
 
@@ -34,11 +35,13 @@ public class OrderInterface : IOrderInterface
                 {
                     Id = reader.GetInt32(reader.GetOrdinal("id")),
                     OrderDate = reader.GetDateTime(reader.GetOrdinal("order_date")),
-                    User = new UserGet
+                    Client = new Client
                     {
                         Id = reader.GetInt32(reader.GetOrdinal("id")),
-                        Username = reader.GetString(reader.GetOrdinal("username")),
-                        Email = reader.GetString(reader.GetOrdinal("email"))
+                        FirstName = reader.GetString(reader.GetOrdinal("first_name")),
+                        LastName = reader.GetString(reader.GetOrdinal("last_name")),
+                        Email = reader.GetString(reader.GetOrdinal("email")),
+                        Phone = reader.GetString(reader.GetOrdinal("phone"))
                     }
                 };
                 orders.Add(order);
@@ -61,7 +64,7 @@ public class OrderInterface : IOrderInterface
             connection.Open();
             await using var command = connection.CreateCommand();
             command.CommandText =
-                $"SELECT * FROM Orders o1 JOIN Users u1 ON o1.user_id = u1.id WHERE o1.id = {orderId}";
+                $"SELECT * FROM Orders o1 JOIN Clients u1 ON o1.client_id = u1.id WHERE o1.id = {orderId}";
 
             Console.WriteLine(command.CommandText);
 
@@ -72,11 +75,13 @@ public class OrderInterface : IOrderInterface
             {
                 Id = reader.GetInt32(reader.GetOrdinal("id")),
                 OrderDate = reader.GetDateTime(reader.GetOrdinal("order_date")),
-                User = new UserGet
+                Client = new Client
                 {
                     Id = reader.GetInt32(reader.GetOrdinal("id")),
-                    Username = reader.GetString(reader.GetOrdinal("username")),
-                    Email = reader.GetString(reader.GetOrdinal("email"))
+                    FirstName = reader.GetString(reader.GetOrdinal("first_name")),
+                    LastName = reader.GetString(reader.GetOrdinal("last_name")),
+                    Email = reader.GetString(reader.GetOrdinal("email")),
+                    Phone = reader.GetString(reader.GetOrdinal("phone"))
                 }
             };
             return order;
@@ -87,52 +92,6 @@ public class OrderInterface : IOrderInterface
             throw;
         }
     }
-
-    public async Task<OrderDetailsGet> GetOrderDetails(int orderId)
-    {
-        await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
-        try
-        {
-            connection.Open();
-            await using var command = connection.CreateCommand();
-            command.CommandText =
-                $"SELECT * FROM OrderDetails od1 JOIN Products p1 ON od1.product_id = p1.id JOIN mydb.Orders O on od1.order_id = O.id join mydb.Users U on U.id = O.user_id where od1.order_id = {orderId}";
-
-            Console.WriteLine(command.CommandText);
-
-            await using var reader = await command.ExecuteReaderAsync();
-            if (await reader.ReadAsync())
-            {
-                var orderDetail = new OrderDetailsGet
-                {
-                    OrderId = reader.GetInt32(reader.GetOrdinal("id")),
-                    Quantity = reader.GetInt32(reader.GetOrdinal("quantity")),
-                    Product = await getProductsForOrder(orderId),
-                    AdditionalColumn = reader.GetString(reader.GetOrdinal("additional_column")),
-                    Order = new OrderGet
-                    {
-                        Id = reader.GetInt32(reader.GetOrdinal("id")),
-                        OrderDate = reader.GetDateTime(reader.GetOrdinal("order_date")),
-                        User = new UserGet
-                        {
-                            Id = reader.GetInt32(reader.GetOrdinal("id")),
-                            Username = reader.GetString(reader.GetOrdinal("username")),
-                            Email = reader.GetString(reader.GetOrdinal("email"))
-                        }
-                    }
-                };
-                return orderDetail;
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-            throw;
-        }
-
-        return null;
-    }
-
     public async Task<OrderCreate> CreateOrder(int userId)
     {
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
@@ -152,47 +111,20 @@ public class OrderInterface : IOrderInterface
             throw;
         }
     }
-
-    public Task UpdateOrder(OrderUpdate order)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task DeleteOrder(int orderId)
-    {
-        throw new NotImplementedException();
-    }
-    
-    private async Task<List<ProductGet>> getProductsForOrder(int orderId)
+    public async Task<bool> DeleteOrder(int orderId)
     {
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
         try
         {
             connection.Open();
             await using var command = connection.CreateCommand();
-            command.CommandText =
-                $"SELECT * FROM OrderDetails od1 JOIN Products p1 ON od1.product_id = p1.id JOIN mydb.Orders O on od1.order_id = O.id join mydb.Users U on U.id = O.user_id where od1.order_id = {orderId}";
-
-            Console.WriteLine(command.CommandText);
-
-            await using var reader = await command.ExecuteReaderAsync();
-            var products = new List<ProductGet>();
-            while (await reader.ReadAsync())
-            {
-                var product = new ProductGet
-                {
-                    Id = reader.GetInt32(reader.GetOrdinal("id")),
-                    price = reader.GetDecimal(reader.GetOrdinal("price")),
-                    name = reader.GetString(reader.GetOrdinal("name"))
-                };
-                products.Add(product);
-            }
-
-            return products;
+            command.CommandText = $"DELETE FROM Orders WHERE id = {orderId}";
+            var result = await command.ExecuteNonQueryAsync();
+            return result == 1;
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.Message);
+            Console.WriteLine(e);
             throw;
         }
     }

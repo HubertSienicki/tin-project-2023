@@ -2,8 +2,10 @@
 
 public class OrderDetailsGet
 {
+    public string AdditionalColumn { get; set; } = null!;
     public int Quantity { get; set; }
-    public string AdditionalColumn { get; set; } = default!;
-    public int OrderId { get; set; }
-    public int ProductId { get; set; }
+    
+    // navigation
+    public OrderGet Order { get; set; } = null!;
+    public List<ProductGet>? Product { get; set; }
 }
