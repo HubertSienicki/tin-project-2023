@@ -3,10 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/styles.css";
 const Home = () => {
+	//react variables
+	const navigate = useNavigate();
+
 	// State for user credentials and orders
+	const [successMessage, setSuccessMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 	const [username, setUsername] = useState("");
 	const [products, setProducts] = useState([]);
 	const [clients, setClients] = useState([]);
+	const [userRole, setUserRole] = useState("");
 	const [order, setOrder] = useState({
 		productId: "",
 		clientId: "",
@@ -29,6 +35,14 @@ const Home = () => {
 		return JSON.parse(jsonPayload);
 	};
 
+	const logout = () => {
+		// Clear the session storage of JWT token
+		sessionStorage.removeItem("token");
+
+		// Redirect the user to the login page or home page
+		navigate("/login");
+	};
+
 	useEffect(() => {
 		// decode jwt for a role
 		const token = sessionStorage.getItem("token");
@@ -37,8 +51,13 @@ const Home = () => {
 			const roleKey =
 				"http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
 			const role = payload[roleKey];
-			console.log(role);
-			setUsername(role);
+			setUserRole(role);
+
+			if (role !== "Admin" && role !== "User") {
+				navigate("/unauthorized"); // redirect to unauthorized access page
+			}
+		} else {
+			navigate("/unauthorized"); // redirect to login if no token
 		}
 
 		// Fetch products
@@ -81,43 +100,40 @@ const Home = () => {
 
 	const submitOrder = async (e) => {
 		e.preventDefault();
-
-		console.log("Order Data:", order);
+		setSuccessMessage(""); // Reset success message
+		setErrorMessage(""); // Reset error message
 
 		const token = sessionStorage.getItem("token");
 
 		try {
+			// First API Call: Create Order
 			const orderCreateResponse = await axios.post(
 				`http://localhost:5003/Order/create?clientId=${order.clientId}`,
 				{},
-				{
-					headers: { Authorization: `Bearer ${token}` },
-				}
+				{ headers: { Authorization: `Bearer ${token}` } }
 			);
 
 			const orderId = orderCreateResponse.data.orderId;
 			if (!orderId || orderId === 0) {
-				console.error("Invalid orderId received:", orderId);
+				setErrorMessage(`Invalid orderId received: ${orderId}`);
 				return;
 			}
 
-			console.log("Product ID:", order.productId);
-			console.log("Quantity:", order.quantity);
-
+			// Validations for product ID and quantity
 			const parsedProductId = parseInt(order.productId, 10);
 			const parsedQuantity = parseInt(order.quantity, 10);
 
-			// Check if parsing resulted in valid numbers
 			if (isNaN(parsedProductId) || parsedProductId <= 0) {
-				console.error("Invalid or missing Product ID");
+				setErrorMessage("Invalid or missing Product ID");
 				return;
 			}
 
 			if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
-				console.error("Invalid or missing Quantity");
+				setErrorMessage("Invalid or missing Quantity");
 				return;
 			}
 
+			// Second API Call: Submit Order Details
 			try {
 				const orderDetailsResponse = await axios.post(
 					"http://localhost:5004/Order/Details/create",
@@ -127,38 +143,35 @@ const Home = () => {
 						quantity: parsedQuantity,
 						additionalColumn: order.comments,
 					},
-					{
-						headers: { Authorization: `Bearer ${token}` },
-					}
+					{ headers: { Authorization: `Bearer ${token}` } }
 				);
 
 				console.log("Order Details Response:", orderDetailsResponse.data);
-				console.log("Order submitted successfully");
+				setSuccessMessage("Order submitted successfully!");
 			} catch (error) {
 				console.error("Error submitting order details:", error);
+				setErrorMessage("Error submitting order details. Please try again.");
 			}
 		} catch (error) {
-			console.error(
-				"Error submitting order:",
-				error.response ? error.response.data : error
-			);
+			console.error("Error creating order:", error);
+			setErrorMessage("Error creating order. Please try again.");
 		}
 	};
+
 	return (
 		<div className="container">
-			<div className="form-box">
-				<div className="dashboard-container">
-					<h1 className="form-title">Home</h1>
-					{
-						<div className="data-table">
-							<h3>Zalogowano</h3>
-							<p>Rola użytkownika: {username}</p>
-						</div>
-					}
+			 {(userRole === "Admin" || userRole === "User") && (
+				  <div className="form-box">
+						<div className="dashboard-container">
+							 <h1 className="form-title">Home</h1>
+							 <div className="data-table">
+								  <h3>Zalogowano</h3>
+								  <p>Rola użytkownika: {username}</p>
+							 </div>
 
-					<div className="record-form">
-						<h3>Dodaj zamówienie</h3>
-						<form onSubmit={submitOrder}>
+							 <div className="record-form">
+								  <h3>Dodaj zamówienie</h3>
+								  <form onSubmit={submitOrder}>
 							<select
 								name="productId"
 								onChange={handleOrderChange}
@@ -203,12 +216,22 @@ const Home = () => {
 							<button type="submit" className="button mt-20">
 								Add Order
 							</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+							{successMessage && (
+								<div className="success-message">{successMessage}</div>
+							)}
+							{errorMessage && (
+								<div className="error-message">{errorMessage}</div>
+							)}
+							</form>
+                        </div>
+                        <button onClick={logout} className="button mt-20">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
 };
 
 export default Home;

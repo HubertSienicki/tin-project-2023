@@ -10,7 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e6bb811-0a51-4541-a457-2d04ad1871c4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderDetailsService/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderService/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderService/Controllers/OrderController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +163,7 @@
       <workItem from="1705951281434" duration="207000" />
       <workItem from="1705954393805" duration="2358000" />
       <workItem from="1706003258946" duration="7133000" />
-      <workItem from="1706021273473" duration="3880000" />
+      <workItem from="1706021273473" duration="3907000" />
     </task>
     <task id="LOCAL-00001" summary="remove and re-add order service">
       <option name="closed" value="true" />

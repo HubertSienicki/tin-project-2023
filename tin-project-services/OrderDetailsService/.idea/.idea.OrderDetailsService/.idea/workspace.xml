@@ -9,8 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService/OrderDetailsService.cs" afterDir="false" />
+    <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="static copy of JsonSchema adjustments">
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../OrderService/OrderService/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/OrderService/Controllers/OrderController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +156,7 @@
       <workItem from="1705951395088" duration="67000" />
       <workItem from="1705954382547" duration="1784000" />
       <workItem from="1706012468076" duration="3321000" />
-      <workItem from="1706019702771" duration="5451000" />
+      <workItem from="1706019702771" duration="7195000" />
     </task>
     <task id="LOCAL-00001" summary="add models for orderDetails service">
       <option name="closed" value="true" />
@@ -194,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706027853961</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="static copy of JsonSchema adjustments">
+      <option name="closed" value="true" />
+      <created>1706028175848</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706028175848</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +231,7 @@
     <MESSAGE value="Finish order details service" />
     <MESSAGE value="add cors and test endpoint, change api port to 5004" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="static copy of JsonSchema adjustments" />
+    <option name="LAST_COMMIT_MESSAGE" value="static copy of JsonSchema adjustments" />
   </component>
 </project>

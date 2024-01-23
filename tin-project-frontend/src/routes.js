@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashbord/Dashboard";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import UnauthorizedPage from "./pages/Unauthorized/Unauthorized";
 
 const AppRoutes = () => (
 	<Router>
@@ -12,6 +13,7 @@ const AppRoutes = () => (
 			<Route path="/login" element={<Login />} />
 			<Route path="/register" element={<Register />} />
 			<Route path="/dashboard" element={<Dashboard />} />
+			<Route path="/unauthorized" element={<UnauthorizedPage />} />
 			{/* more routes here if needed */}
 		</Routes>
 	</Router>

@@ -15,7 +15,7 @@ public class OrderController : ControllerBase
         _orderInterface = orderInterface;
     }
 
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("user/{userId:int}")]
     public async Task<IActionResult> GetUserOrders(int userId)
     {
@@ -25,7 +25,7 @@ public class OrderController : ControllerBase
         return Ok(orders);
     }
 
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("{orderId:int}")]
     public async Task<IActionResult> GetOrder(int orderId)
     {
@@ -34,7 +34,7 @@ public class OrderController : ControllerBase
             return NotFound("Order not found");
         return Ok(order);
     }
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Admin")]
     [HttpPost("create")]
     public async Task<IActionResult> CreateOrder(int clientId)
     {
@@ -57,7 +57,7 @@ public class OrderController : ControllerBase
     }
 
 
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Admin")]
     [HttpDelete("{orderId:int}")]
     public async Task<IActionResult> DeleteOrder(int orderId)
     {
@@ -85,7 +85,7 @@ public class OrderController : ControllerBase
         return Task.FromResult<IActionResult>(Ok("Test OK"));
     }
 
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "User, Admin")]
     [HttpGet("test/jwt")]
     public IActionResult TestJWT()
     {
