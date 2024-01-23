@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { fetchClientsApi } from "../../api/ClientApi";
+import { fetchProductsApi } from "../../api/ProductApi";
 import "../../assets/styles/styles.css";
+import { decodeToken } from "../../services/JWTService";
 const Home = () => {
 	//react variables
 	const navigate = useNavigate();
@@ -9,14 +12,12 @@ const Home = () => {
 	// State for user credentials and orders
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-	const [username, setUsername] = useState("");
+	const [username] = useState("");
 	const [products, setProducts] = useState([]);
 	const [clients, setClients] = useState([]);
 	const [userRole, setUserRole] = useState("");
 
 	// error states
-	const [orderSuccessMessage, setOrderSuccessMessage] = useState("");
-	const [orderErrorMessage, setOrderErrorMessage] = useState("");
 
 	const [clientSuccessMessage, setClientSuccessMessage] = useState("");
 	const [clientErrorMessage, setClientErrorMessage] = useState("");
@@ -56,21 +57,6 @@ const Home = () => {
 		productPriceError: "",
 	});
 
-	const decodeToken = (token) => {
-		const base64Url = token.split(".")[1];
-		const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-		const jsonPayload = decodeURIComponent(
-			atob(base64)
-				.split("")
-				.map((c) => {
-					return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-				})
-				.join("")
-		);
-
-		return JSON.parse(jsonPayload);
-	};
-
 	const logout = () => {
 		// Clear the session storage of JWT token
 		sessionStorage.removeItem("token");
@@ -97,37 +83,19 @@ const Home = () => {
 		}
 
 		// Fetch products
-		const fetchProducts = async () => {
-			try {
-				const response = await axios.get("http://localhost:5002/Product", {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
-				setProducts(response.data);
-				console.log(response.data);
-			} catch (error) {
-				console.error(error);
-			}
+		const fetchProductsData = async () => {
+			const productsData = await fetchProductsApi(token);
+			setProducts(productsData);
 		};
-
-		fetchProducts();
 
 		// Fetch clients
-		const fetchClients = async () => {
-			try {
-				const response = await axios.get("http://localhost:5005/Client", {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
-				setClients(response.data);
-				console.log(response.data);
-			} catch (error) {
-				console.error(error);
-			}
+		const fetchClientData = async () => {
+			const clientsData = await fetchClientsApi(token);
+			setClients(clientsData);
 		};
-		fetchClients();
+
+		fetchProductsData();
+		fetchClientData();
 	}, []);
 
 	const handleNewClientChange = (e) => {
@@ -158,6 +126,7 @@ const Home = () => {
 		if (!newClient.email) {
 			errors.emailError = "Email is required.";
 		} else {
+			// Email validation using regex
 			const emailRegex = /\S+@\S+\.\S+/;
 			if (!emailRegex.test(newClient.email)) {
 				errors.emailError = "Invalid email format.";
@@ -311,6 +280,13 @@ const Home = () => {
 		<div className="container">
 			{(userRole === "Admin" || userRole === "User") && (
 				<div className="form-box">
+					<nav className="navbar">
+						<Link to="/dashboard" className="nav-link">
+							Dashboard
+						</Link>{" "}
+						{/* Link to the home page */}
+						{/* Add other navigation links if needed */}
+					</nav>
 					<div className="dashboard-container">
 						<div className="top-right">
 							<button onClick={logout} className="button mt-20">
@@ -439,11 +415,12 @@ const Home = () => {
 										value={order.productId}
 									>
 										<option value="">Wybierz produkt</option>
-										{products.map((product) => (
-											<option key={product.id} value={product.id}>
-												{product.name}
-											</option>
-										))}
+										{products &&
+											products.map((product) => (
+												<option key={product.id} value={product.id}>
+													{product.name}
+												</option>
+											))}
 									</select>
 
 									<select
@@ -452,11 +429,12 @@ const Home = () => {
 										value={order.clientId}
 									>
 										<option value="">Wybierz klienta</option>
-										{clients.map((client) => (
-											<option key={client.id} value={client.id}>
-												{client.firstName} {client.lastName}
-											</option>
-										))}
+										{clients &&
+											clients.map((client) => (
+												<option key={client.id} value={client.id}>
+													{client.firstName} {client.lastName}
+												</option>
+											))}
 									</select>
 
 									<input

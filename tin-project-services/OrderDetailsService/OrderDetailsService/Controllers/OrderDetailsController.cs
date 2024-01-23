@@ -22,10 +22,10 @@ public class OrderDetailsController : ControllerBase
 
     [Authorize(Roles = "Admin")]
     [HttpGet("")]
-    public Task<IActionResult> GetOrderDetailsAsync()
+    public async Task<IActionResult> GetOrderDetailsAsync([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
     {
-        var orderDetails = _orderDetailsRepository.GetOrderDetailsAsync();
-        return Task.FromResult<IActionResult>(Ok(orderDetails.Result));
+        var orderDetails = await _orderDetailsRepository.GetOrderDetailsAsync(pageNumber, pageSize);
+        return Ok(orderDetails);
     }
 
     [Authorize(Roles = "Admin, User")]

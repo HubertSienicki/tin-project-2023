@@ -9,17 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="static copy of JsonSchema adjustments">
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/assets/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/assets/styles/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="add order deletion">
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/DataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/DataTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsPut.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsPut.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +156,7 @@
       <workItem from="1705954382547" duration="1784000" />
       <workItem from="1706012468076" duration="3321000" />
       <workItem from="1706019702771" duration="7396000" />
-      <workItem from="1706036779966" duration="4432000" />
+      <workItem from="1706036779966" duration="5413000" />
     </task>
     <task id="LOCAL-00001" summary="add models for orderDetails service">
       <option name="closed" value="true" />
@@ -212,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706028175848</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add order deletion">
+      <option name="closed" value="true" />
+      <created>1706041952224</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706041952224</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +240,7 @@
     <MESSAGE value="add cors and test endpoint, change api port to 5004" />
     <MESSAGE value="update" />
     <MESSAGE value="static copy of JsonSchema adjustments" />
-    <option name="LAST_COMMIT_MESSAGE" value="static copy of JsonSchema adjustments" />
+    <MESSAGE value="add order deletion" />
+    <option name="LAST_COMMIT_MESSAGE" value="add order deletion" />
   </component>
 </project>

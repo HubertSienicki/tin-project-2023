@@ -5,9 +5,13 @@ import "../../assets/styles/styles.css";
 
 const DataTable = () => {
 	const [records, setRecords] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [recordsPerPage, setRecordsPerPage] = useState(10);
 	const [editedRecords, setEditedRecords] = useState({});
 	const [products, setProducts] = useState([]);
 	const [userRole, setUserRole] = useState("");
+	const [selectedRows, setSelectedRows] = useState({});
+	const [isDeleting, setIsDeleting] = useState(false); // To track if deletion is in progress
 
 	const navigate = useNavigate();
 
@@ -34,18 +38,20 @@ const DataTable = () => {
 
 	useEffect(() => {
 		const token = sessionStorage.getItem("token");
-		if (token) {
-			const payload = decodeToken(token);
-			const roleKey =
-				"http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
-			const role = payload[roleKey];
-			setUserRole(role);
+		if (!token) {
+			navigate("/unauthorized");
+			return;
+		}
 
-			if (role !== "Admin") {
-				navigate("/unauthorized"); // redirect to unauthorized access page
-			}
-		} else {
-			navigate("/unauthorized"); // redirect to login if no token
+		const payload = decodeToken(token);
+		const roleKey =
+			"http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+		const role = payload[roleKey];
+		setUserRole(role);
+
+		if (role !== "Admin") {
+			navigate("/unauthorized");
+			return;
 		}
 
 		const fetchProducts = async () => {
@@ -66,7 +72,7 @@ const DataTable = () => {
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
-					"http://localhost:5004/Order/Details",
+					`http://localhost:5004/Order/details?pageNumber=${currentPage}&pageSize=${recordsPerPage}`,
 					{
 						headers: {
 							Authorization: `Bearer ${token}`,
@@ -90,12 +96,26 @@ const DataTable = () => {
 				}));
 				setRecords(transformedData);
 			} catch (error) {
-				console.error("Error fetching data:", error);
+				if (error.response) {
+					// The request was made and the server responded with a status code
+					// that falls out of the range of 2xx
+					console.error("Error data:", error.response.data);
+					console.error("Error status:", error.response.status);
+					console.error("Error headers:", error.response.headers);
+				} else if (error.request) {
+					// The request was made but no response was received
+					console.error("Error request:", error.request);
+				} else {
+					// Something happened in setting up the request that triggered an Error
+					console.error("Error", error.message);
+				}
+				console.error("Error config:", error.config);
 			}
 		};
 
 		fetchData();
-	}, []);
+		// after change trigger one of those
+	}, [currentPage, recordsPerPage, navigate]);
 
 	const handleEdit = (order_id, field, value) => {
 		setEditedRecords({
@@ -107,37 +127,134 @@ const DataTable = () => {
 		});
 	};
 
-	const handleProductChange = (order_id, selectedProductId) => {
-		const selectedProduct = products.find(
-			(p) => p.id === parseInt(selectedProductId)
-		);
-		if (selectedProduct) {
-			setEditedRecords({
-				...editedRecords,
-				[order_id]: {
-					...editedRecords[order_id],
-					product_name: selectedProduct.name,
-					// Update the price calculation if needed
-				},
+	const handleSelectRow = (orderId, isSelected) => {
+		setSelectedRows({
+			...selectedRows,
+			[orderId]: isSelected,
+		});
+	};
+
+	const handleSelectAll = (isSelected) => {
+		const newSelectedRows = {};
+		if (isSelected) {
+			records.forEach((record) => {
+				newSelectedRows[record.order_id] = true;
 			});
 		}
+		setSelectedRows(newSelectedRows);
+	};
+
+	const handleDeleteSelected = async () => {
+		setIsDeleting(true);
+
+		const token = sessionStorage.getItem("token");
+		const selectedOrderIds = Object.keys(selectedRows).filter(
+			(orderId) => selectedRows[orderId]
+		);
+
+		try {
+			const deletePromises = selectedOrderIds.map((orderId) =>
+				axios
+					.delete(`http://localhost:5004/Order/details/${orderId}`, {
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					})
+					.then((response) => {
+						console.log(`Delete success for order ${orderId}:`, response);
+					})
+					.catch((error) => {
+						console.error(`Error deleting order ${orderId}:`, error);
+						throw error; // Re-throw error to be caught by the outer catch block
+					})
+			);
+
+			await Promise.all(deletePromises);
+
+			setRecords((prevRecords) =>
+				prevRecords.filter(
+					(record) => !selectedOrderIds.includes(record.order_id)
+				)
+			);
+			console.log("Successfully deleted selected orders");
+		} catch (error) {
+			console.error("Error deleting orders:", error);
+		}
+
+		setIsDeleting(false);
+		window.location.reload();
 	};
 
 	const handleSubmit = async () => {
-		// Here you would send the editedRecords to your API endpoint
-		// For each record in editedRecords, call the API to update the record
-		// Example: await updateRecord(order_id, editedRecord[order_id]);
-		console.log("Submitted", editedRecords);
+		const token = sessionStorage.getItem("token");
+
+		const updateRecord = async (orderId, data) => {
+			try {
+				const requestBody = {
+					quantity: data.quantity ? parseInt(data.quantity, 10) : 0,
+					additionalColumn: data.additional_comments || "",
+				};
+
+				await axios.put(
+					`http://localhost:5004/Order/details/update/${orderId}`,
+					requestBody,
+					{
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}
+				);
+
+				console.log(`Successfully updated order ${orderId}`);
+			} catch (error) {
+				console.error(`Error updating order ${orderId}:`, error);
+			}
+		};
+
+		const updateRequests = Object.entries(editedRecords).map(
+			([orderId, data]) => updateRecord(orderId, data)
+		);
+
+		await Promise.all(updateRequests);
+
+		console.log("All updates completed, refreshing page.");
+
+		window.location.reload();
+	};
+
+	const handlePageChange = (newPage) => {
+		setCurrentPage(newPage);
+	};
+
+	const handleRecordsPerPageChange = (event) => {
+		setRecordsPerPage(event.target.value);
+		setCurrentPage(1); // Reset to first page when records per page changes
 	};
 
 	return (
 		<div className="data-table">
+			<button
+				onClick={() => {
+					setIsDeleting(true); // Set deletion mode
+					handleDeleteSelected(); // Call the deletion function
+				}}
+				className="button mt-20"
+				disabled={isDeleting} // Disable the button during deletion
+			>
+				Delete Selected
+			</button>
 			<button onClick={logout} className="button mt-20">
 				Logout
 			</button>
 			<table>
 				<thead>
 					<tr>
+						<th>
+							<input
+								type="checkbox"
+								onChange={(e) => handleSelectAll(e.target.checked)}
+							/>
+						</th>
 						<th>Order ID</th>
 						<th>Product Name</th>
 						<th>Quantity</th>
@@ -151,24 +268,17 @@ const DataTable = () => {
 				<tbody>
 					{records.map((record) => (
 						<tr key={record.order_id}>
-							<td>{record.order_id}</td>
 							<td>
-								<select
-									value={
-										editedRecords[record.order_id]?.product_name ??
-										record.product_name
-									}
+								<input
+									type="checkbox"
+									checked={selectedRows[record.order_id] || false}
 									onChange={(e) =>
-										handleProductChange(record.order_id, e.target.value)
+										handleSelectRow(record.order_id, e.target.checked)
 									}
-								>
-									{products.map((product) => (
-										<option key={product.id} value={product.id}>
-											{product.name}
-										</option>
-									))}
-								</select>
+								/>
 							</td>
+							<td>{record.order_id}</td>
+							<td>{record.product_name}</td>
 							<td>
 								<input
 									type="number"
@@ -204,6 +314,22 @@ const DataTable = () => {
 					))}
 				</tbody>
 			</table>
+			<div className="pagination-controls">
+				<button
+					onClick={() => handlePageChange(currentPage - 1)}
+					disabled={currentPage === 1}
+				>
+					Previous
+				</button>
+				<span>Page {currentPage}</span>
+				<button onClick={() => handlePageChange(currentPage + 1)}>Next</button>
+				<select value={recordsPerPage} onChange={handleRecordsPerPageChange}>
+					<option value={1}>1</option>
+					<option value={10}>10</option>
+					<option value={20}>20</option>
+					<option value={50}>50</option>
+				</select>
+			</div>
 			<button onClick={handleSubmit}>Submit Changes</button>
 		</div>
 	);

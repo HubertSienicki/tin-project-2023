@@ -15,15 +15,26 @@ public class OrderDetailsRepository : IOrderDetailsRepository
     }
 
     
-    public async Task<IEnumerable<OrderDetailsGet>> GetOrderDetailsAsync()
+    public async Task<IEnumerable<OrderDetailsGet>> GetOrderDetailsAsync(int pageNumber, int pageSize)
     {
         await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
 
         try
         {
             await connection.OpenAsync();
-            const string sql = "SELECT order_id, order_date, product_id, quantity, additional_column, p1.name as product_name, p1.price as product_price, U.Id as client_id, U.first_name as first_name, U.last_name as last_name, U.email as user_email, U.phone as phone FROM OrderDetails od1 JOIN Products p1 ON od1.product_id = p1.id JOIN mydb.Orders O on od1.order_id = O.id join mydb.Clients U on U.id = O.client_id";
+            // pagination
+            var skip = (pageNumber - 1) * pageSize;
+            const string sql = @"
+            SELECT order_id, order_date, product_id, quantity, additional_column, p1.name as product_name, p1.price as product_price, U.Id as client_id, U.first_name as first_name, U.last_name as last_name, U.email as user_email, U.phone as phone 
+            FROM OrderDetails od1 
+            JOIN Products p1 ON od1.product_id = p1.id 
+            JOIN mydb.Orders O on od1.order_id = O.id 
+            join mydb.Clients U on U.id = O.client_id
+            LIMIT @PageSize OFFSET @Skip";
+        
             var command = new MySqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@PageSize", pageSize);
+            command.Parameters.AddWithValue("@Skip", skip);
             var reader = await command.ExecuteReaderAsync();
             var orderDetails = new List<OrderDetailsGet>();
             
