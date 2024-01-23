@@ -12,7 +12,7 @@ const Home = () => {
 	// State for user credentials and orders
 	const [successMessage, setSuccessMessage] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
-	const [username] = useState("");
+	const [username, setUsername] = useState("");
 	const [products, setProducts] = useState([]);
 	const [clients, setClients] = useState([]);
 	const [userRole, setUserRole] = useState("");
@@ -288,15 +288,17 @@ const Home = () => {
 						{/* Add other navigation links if needed */}
 					</nav>
 					<div className="dashboard-container">
+						<div className="dashboard-information">
+							<h1 className="form-title">Home</h1>
+							<div className="data-table">
+								<h3>You are now logged in.</h3>
+								<p>Your current role is {userRole}</p>
+							</div>
+						</div>
 						<div className="top-right">
 							<button onClick={logout} className="button mt-20">
 								Logout
 							</button>
-						</div>
-						<h1 className="form-title">Home</h1>
-						<div className="data-table">
-							<h3>Zalogowano</h3>
-							<p>Rola użytkownika: {username}</p>
 						</div>
 						<div
 							className="forms-container"
@@ -407,14 +409,15 @@ const Home = () => {
 								</form>
 							</div>
 							<div className="record-form">
-								<h3>Dodaj zamówienie</h3>
+								<h3>Add an order</h3>
 								<form onSubmit={submitOrder}>
 									<select
 										name="productId"
 										onChange={handleOrderChange}
 										value={order.productId}
+										className="order-dropdown"
 									>
-										<option value="">Wybierz produkt</option>
+										<option value="">Choose a product</option>
 										{products &&
 											products.map((product) => (
 												<option key={product.id} value={product.id}>
@@ -427,8 +430,9 @@ const Home = () => {
 										name="clientId"
 										onChange={handleOrderChange}
 										value={order.clientId}
+										className="order-dropdown"
 									>
-										<option value="">Wybierz klienta</option>
+										<option value="">Choose a client</option>
 										{clients &&
 											clients.map((client) => (
 												<option key={client.id} value={client.id}>
@@ -440,7 +444,7 @@ const Home = () => {
 									<input
 										type="text"
 										name="quantity"
-										placeholder="Ilość"
+										placeholder="Amount"
 										value={order.quantity}
 										onChange={handleOrderChange}
 									/>
@@ -448,7 +452,7 @@ const Home = () => {
 									<input
 										type="text"
 										name="comments"
-										placeholder="Dodatkowe komentarze"
+										placeholder="Additional comments (optional)"
 										value={order.comments}
 										onChange={handleOrderChange}
 									></input>

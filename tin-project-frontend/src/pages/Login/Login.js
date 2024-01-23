@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { decodeToken } from "../../services/JWTService";
 import "../../assets/styles/styles.css";
 
 const Login = () => {
@@ -72,10 +73,10 @@ const Login = () => {
 	return (
 		<div className="container">
 			<div className="form-box">
-				<h2 className="form-title">Logowanie</h2>
+				<h2 className="form-title">Login</h2>
 				<form onSubmit={handleSubmit}>
 					<div className="form-control">
-						<label htmlFor="Username">Nazwa Użytkownika</label>
+						<label htmlFor="Username">Username</label>
 						<input
 							type="username"
 							onChange={(e) => setUsername(e.target.value)}
@@ -83,7 +84,7 @@ const Login = () => {
 						/>
 					</div>
 					<div className="form-control">
-						<label htmlFor="password">Hasło</label>
+						<label htmlFor="password">Password</label>
 						<input
 							type="password"
 							onChange={(e) => setPassword(e.target.value)}
@@ -93,10 +94,10 @@ const Login = () => {
 
 					{error && <div className="error-message">{error}</div>}
 					<button type="submit" className="btn-primary">
-						Zaloguj się
+						Log in
 					</button>
 					<a href="/register" className="link">
-						Nie masz konta? Zarejestruj się
+						No account? Register Here.
 					</a>
 				</form>
 			</div>

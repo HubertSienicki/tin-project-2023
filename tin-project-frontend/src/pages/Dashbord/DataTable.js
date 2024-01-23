@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../assets/styles/styles.css";
+import { decodeToken } from "../../services/JWTService";
 
 const DataTable = () => {
 	const [records, setRecords] = useState([]);
@@ -14,30 +15,58 @@ const DataTable = () => {
 	const [isDeleting, setIsDeleting] = useState(false); // To track if deletion is in progress
 
 	const navigate = useNavigate();
-
-	const decodeToken = (token) => {
-		const base64Url = token.split(".")[1];
-		const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-		const jsonPayload = decodeURIComponent(
-			atob(base64)
-				.split("")
-				.map((c) => {
-					return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-				})
-				.join("")
-		);
-
-		return JSON.parse(jsonPayload);
-	};
-
 	const logout = () => {
 		// Clear the session storage of JWT token
 		sessionStorage.removeItem("token");
 		navigate("/login"); // Redirect to login page or home page
 	};
+	const token = sessionStorage.getItem("token");
+
+	const fetchData = async () => {
+		try {
+			const response = await axios.get(
+				`http://localhost:5004/Order/details?pageNumber=${currentPage}&pageSize=${recordsPerPage}`,
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
+
+			// Transforming the data to a suitable format
+			const transformedData = response.data.map((item) => ({
+				order_id: item.order.id,
+				product_name: item.product.map((p) => p.name).join(", "),
+				quantity: item.quantity,
+				// Calculate the total price for each product and sum them up
+				price: item.product
+					.reduce((total, prod) => total + prod.price * item.quantity, 0)
+					.toFixed(2),
+				additional_comments: item.additionalColumn,
+				client_name: item.order.client.firstName,
+				client_lastname: item.order.client.lastName,
+				client_phone_number: item.order.client.phone,
+			}));
+			setRecords(transformedData);
+		} catch (error) {
+			if (error.response) {
+				// The request was made and the server responded with a status code
+				// that falls out of the range of 2xx
+				console.error("Error data:", error.response.data);
+				console.error("Error status:", error.response.status);
+				console.error("Error headers:", error.response.headers);
+			} else if (error.request) {
+				// The request was made but no response was received
+				console.error("Error request:", error.request);
+			} else {
+				// Something happened in setting up the request that triggered an Error
+				console.error("Error", error.message);
+			}
+			console.error("Error config:", error.config);
+		}
+	};
 
 	useEffect(() => {
-		const token = sessionStorage.getItem("token");
 		if (!token) {
 			navigate("/unauthorized");
 			return;
@@ -68,51 +97,6 @@ const DataTable = () => {
 		};
 
 		fetchProducts();
-
-		const fetchData = async () => {
-			try {
-				const response = await axios.get(
-					`http://localhost:5004/Order/details?pageNumber=${currentPage}&pageSize=${recordsPerPage}`,
-					{
-						headers: {
-							Authorization: `Bearer ${token}`,
-						},
-					}
-				);
-
-				// Transforming the data to a suitable format
-				const transformedData = response.data.map((item) => ({
-					order_id: item.order.id,
-					product_name: item.product.map((p) => p.name).join(", "),
-					quantity: item.quantity,
-					// Calculate the total price for each product and sum them up
-					price: item.product
-						.reduce((total, prod) => total + prod.price * item.quantity, 0)
-						.toFixed(2),
-					additional_comments: item.additionalColumn,
-					client_name: item.order.client.firstName,
-					client_lastname: item.order.client.lastName,
-					client_phone_number: item.order.client.phone,
-				}));
-				setRecords(transformedData);
-			} catch (error) {
-				if (error.response) {
-					// The request was made and the server responded with a status code
-					// that falls out of the range of 2xx
-					console.error("Error data:", error.response.data);
-					console.error("Error status:", error.response.status);
-					console.error("Error headers:", error.response.headers);
-				} else if (error.request) {
-					// The request was made but no response was received
-					console.error("Error request:", error.request);
-				} else {
-					// Something happened in setting up the request that triggered an Error
-					console.error("Error", error.message);
-				}
-				console.error("Error config:", error.config);
-			}
-		};
-
 		fetchData();
 		// after change trigger one of those
 	}, [currentPage, recordsPerPage, navigate]);
@@ -165,24 +149,20 @@ const DataTable = () => {
 					})
 					.catch((error) => {
 						console.error(`Error deleting order ${orderId}:`, error);
-						throw error; // Re-throw error to be caught by the outer catch block
+						throw error;
 					})
 			);
 
 			await Promise.all(deletePromises);
 
-			setRecords((prevRecords) =>
-				prevRecords.filter(
-					(record) => !selectedOrderIds.includes(record.order_id)
-				)
-			);
+			// Call fetchData to refresh the data on the page
+			fetchData();
 			console.log("Successfully deleted selected orders");
 		} catch (error) {
 			console.error("Error deleting orders:", error);
 		}
 
 		setIsDeleting(false);
-		window.location.reload();
 	};
 
 	const handleSubmit = async () => {
@@ -233,19 +213,31 @@ const DataTable = () => {
 
 	return (
 		<div className="data-table">
-			<button
-				onClick={() => {
-					setIsDeleting(true); // Set deletion mode
-					handleDeleteSelected(); // Call the deletion function
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "space-between",
+					alignItems: "flex-start",
 				}}
-				className="button mt-20"
-				disabled={isDeleting} // Disable the button during deletion
 			>
-				Delete Selected
-			</button>
-			<button onClick={logout} className="button mt-20">
-				Logout
-			</button>
+				<div className="top-left">
+					<button
+						onClick={() => {
+							setIsDeleting(true); // Set deletion mode
+							handleDeleteSelected(); // Call the deletion function
+						}}
+						className="button mt-20"
+						disabled={isDeleting} // Disable the button during deletion
+					>
+						Delete Selected
+					</button>
+				</div>
+				<div className="top-right">
+					<button onClick={logout} className="button mt-20">
+						Logout
+					</button>
+				</div>
+			</div>
 			<table>
 				<thead>
 					<tr>
@@ -330,7 +322,9 @@ const DataTable = () => {
 					<option value={50}>50</option>
 				</select>
 			</div>
-			<button onClick={handleSubmit}>Submit Changes</button>
+			<div className="align-left">
+				<button onClick={handleSubmit}>Submit Changes</button>
+			</div>
 		</div>
 	);
 };

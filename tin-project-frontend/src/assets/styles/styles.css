@@ -101,6 +101,33 @@ p {
 		flex-basis: 100%;
 	}
 }
+.order-dropdown {
+	display: block;
+	width: 100%; /* Full width */
+	padding: 10px; /* Some padding */
+	border: 1px solid #ddd; /* A light border */
+	border-radius: 4px; /* Rounded borders */
+	box-sizing: border-box; /* Box sizing to ensure padding doesn't affect width */
+	margin-bottom: 15px; /* Space below the dropdown */
+	background-color: white; /* White background */
+	cursor: pointer; /* Cursor change on hover */
+}
+
+.order-dropdown:focus {
+	border-color: #4caf50; /* Change border color on focus for accessibility */
+	outline: none; /* Remove default focus outline */
+}
+
+.order-dropdown:hover {
+	border-color: #45a049; /* Slightly darker border on hover */
+}
+
+.center-text {
+	text-align: center;
+}
+.align-left {
+	text-align: left;
+}
 
 body,
 html {
@@ -108,6 +135,67 @@ html {
 	padding: 0;
 	height: 100%;
 	font-family: "Arial", sans-serif;
+}
+.dashboard-content {
+	text-align: center;
+}
+
+/* Navigation Bar Style with Full Area Clickable */
+.navbar {
+	background-color: #333; /* Dark background for the navbar */
+	color: white;
+	padding: 10px 15px;
+	border-radius: 4px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	display: flex; /* Use flex layout for the navbar */
+	justify-content: center; /* Center items horizontally */
+}
+
+.nav-link {
+	color: white;
+	text-decoration: none; /* Remove underline from links */
+	padding: 10px; /* Adjust padding as needed */
+	transition: color 0.3s, background-color 0.3s;
+	display: flex; /* Enable flex layout */
+	align-items: center; /* Center text vertically */
+	margin: 0 5px; /* Spacing between links */
+	flex-grow: 1; /* Make the link grow to fill space */
+	justify-content: center; /* Center text horizontally */
+}
+
+.nav-link:hover,
+.nav-link:active {
+	color: #4caf50; /* Change color when hovered */
+	background-color: #2c2c2c; /* Slightly change background color */
+	border-radius: 4px;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+	.navbar .nav-link {
+		display: block; /* Stack the links */
+		margin-top: 10px;
+		width: 100%; /* Full width on smaller screens */
+	}
+	.navbar .nav-link:first-child {
+		margin-top: 0;
+	}
+}
+
+.dashboard-information h1,
+.dashboard-information h3,
+.dashboard-information p {
+	margin-top: 10px; /* Reduce the top margin */
+	margin-bottom: 10px; /* Reduce the bottom margin */
+}
+
+.dashboard-information .top-right {
+	margin-bottom: 10px; /* Reduce the bottom margin */
+}
+
+/* Adjust the padding of the dashboard-information container if necessary */
+.dashboard-information {
+	padding: 10px;
 }
 
 .dashboard-container {
@@ -120,13 +208,26 @@ html {
 .top-right {
 	display: flex;
 	justify-content: flex-end;
-	margin-bottom: 2px; /* Space between button and rest of the content */
+	margin-bottom: 2px;
+}
+
+.top-left {
+	display: flex;
+	justify-content: flex-start; /* Aligns content to the left */
+	align-items: flex-start; /* Aligns content to the top */
+	margin-bottom: 2px;
 }
 
 .data-table {
 	width: 100%;
 	border-collapse: collapse;
 	margin: 20px 0;
+}
+
+.data-table h3,
+.data-table p {
+	padding: 8px;
+    text-align: center;
 }
 
 .data-table th,

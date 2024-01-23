@@ -1,39 +1,71 @@
-CREATE TABLE Roles (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
+create table Clients
+(
+    Id         int auto_increment
+        primary key,
+    first_name varchar(50) null,
+    last_name  varchar(50) null,
+    phone      varchar(9)  null,
+    email      varchar(50) null
 );
 
-CREATE TABLE Users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    role_id INT,
-    FOREIGN KEY (role_id) REFERENCES Roles(id)
+create table Orders
+(
+    id         int auto_increment
+        primary key,
+    client_id  int  null,
+    order_date date not null,
+    constraint Orders_Clients_Id_fk
+        foreign key (client_id) references Clients (Id)
 );
 
-CREATE TABLE Products (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL
+create table Products
+(
+    id    int auto_increment
+        primary key,
+    name  varchar(255)   not null,
+    price decimal(10, 2) not null
 );
 
-CREATE TABLE Orders (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT,
-    order_date DATE NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES Users(id)
+create table OrderDetails
+(
+    order_id          int          not null,
+    product_id        int          not null,
+    quantity          int          null,
+    additional_column varchar(255) null,
+    primary key (order_id, product_id),
+    constraint OrderDetails_ibfk_1
+        foreign key (order_id) references Orders (id),
+    constraint OrderDetails_ibfk_2
+        foreign key (product_id) references Products (id)
 );
 
-CREATE TABLE OrderDetails (
-    order_id INT,
-    product_id INT,
-    quantity INT,
-    additional_column VARCHAR(255),
-    PRIMARY KEY (order_id, product_id),
-    FOREIGN KEY (order_id) REFERENCES Orders(id),
-    FOREIGN KEY (product_id) REFERENCES Products(id)
+create index product_id
+    on OrderDetails (product_id);
+
+create table Roles
+(
+    roleId int auto_increment
+        primary key,
+    name   varchar(255) not null
 );
+
+create table Users
+(
+    id            int auto_increment
+        primary key,
+    username      varchar(255) not null,
+    password      varchar(255) not null,
+    email         varchar(255) not null,
+    role_id       int          null,
+    password_salt varchar(255) not null,
+    constraint Users_ibfk_1
+        foreign key (role_id) references Roles (roleId)
+);
+
+create index role_id
+    on Users (role_id);
+
+
 
 INSERT INTO Roles (name) VALUES ('Admin'), ('User'), ('Guest');
 

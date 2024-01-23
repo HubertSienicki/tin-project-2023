@@ -15,7 +15,7 @@ const Register = () => {
 		e.preventDefault();
 
 		if (password !== confirmPassword) {
-			setError("Hasła nie są takie same. Spróbuj ponownie.");
+			setError("Passwords are not the same. Try again with correct credentials.");
 			return;
 		}
 
@@ -48,10 +48,10 @@ const Register = () => {
 	return (
 		<div className="container">
 			<div className="form-box">
-				<h2 className="form-title">Rejestracja</h2>
+				<h2 className="form-title">Register</h2>
 				<form onSubmit={handleSubmit}>
 					<div className="form-control">
-						<label htmlFor="username">Nazwa użytkownika</label>
+						<label htmlFor="username">Username</label>
 						<input
 							type="text"
 							id="username"
@@ -69,7 +69,7 @@ const Register = () => {
 						/>
 					</div>
 					<div className="form-control">
-						<label htmlFor="password">Hasło</label>
+						<label htmlFor="password">Password</label>
 						<input
 							type="password"
 							id="password"
@@ -78,7 +78,7 @@ const Register = () => {
 						/>
 					</div>
 					<div className="form-control">
-						<label htmlFor="confirmPassword">Potwierdź hasło</label>
+						<label htmlFor="confirmPassword">Confirm password</label>
 						<input
 							type="password"
 							id="confirmPassword"
@@ -88,10 +88,10 @@ const Register = () => {
 					</div>
 					{error && <div className="error-message">{error}</div>}
 					<button type="submit" className="btn-primary">
-						Zarejestruj się
+						Register
 					</button>
 					<a href="/login" className="link">
-						Masz już konto? Zaloguj się
+						Already have an account? Log in.
 					</a>
 				</form>
 			</div>
