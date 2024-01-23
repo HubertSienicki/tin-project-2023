@@ -11,8 +11,6 @@ G
 OrderDetailsService.sln,2\2\226823977c7cbe48adb7efcb1d47550a5b0bfd3a
 z
 JOrderDetailsService/obj/Debug/net7.0/OrderDetailsService.GlobalUsings.g.cs,6\5\6589bfb52adda29f006fee669f13bc146814ef14
-=
-.dockerignore,0\5\05a721ebe3ba0754116825ed1359ff1785f4bbac
 x
 HOrderDetailsService/obj/Debug/net7.0/OrderDetailsService.AssemblyInfo.cs,b\1\b1a22d7784930fee52af0116dde3196eedf50e90
 ’
@@ -21,14 +19,8 @@ bOrderDetailsService/obj/Debug/net7.0/OrderDetailsService.GeneratedMSBuildEditor
 0OrderDetailsService/appsettings.Development.json,f\3\f32e64a2b51b6fd5ea3d4e7c8593c2b9185055b5
 ^
 .OrderDetailsService/OrderDetailsService.csproj,a\a\aa3095bf1803170ce7736ea5f8ee07888e98e8ce
-a
-1OrderDetailsService/Model/DTOs/OrderDetailsPut.cs,9\b\9b09d18eab8f8d6435f2929c9d0abed785ff30bb
-c
-3OrderDetailsService/Model/DTOs/JsonSchemas/PUT.json,f\2\f27873fd833d38130e5655d0ca1b924c2d020c79
 z
 JOrderDetailsService/OrderDetailsService/Interfaces/IOrderDetailsService.cs,4\d\4dd1a9434bff7c876932a4318688546f7a944bda
-t
-DOrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs,5\3\53f5cdafd3b8c1f33f6c441974a3935e5308b120
 Y
 )OrderDetailsService/Model/OrderDetails.cs,8\1\81a753e08493b98d1ed8b39c3d00f3adbc7185a3
 S

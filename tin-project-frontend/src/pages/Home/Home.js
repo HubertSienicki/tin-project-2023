@@ -24,7 +24,6 @@ const Home = () => {
 	const [productSuccessMessage, setProductSuccessMessage] = useState("");
 	const [productErrorMessage, setProductErrorMessage] = useState("");
 
-
 	// new object states
 	const [order, setOrder] = useState({
 		productId: "",
@@ -49,12 +48,12 @@ const Home = () => {
 		firstNameError: "",
 		lastNameError: "",
 		phoneNumberError: "",
-		emailError: ""
+		emailError: "",
 	});
-	
+
 	const [productErrors, setProductErrors] = useState({
 		productNameError: "",
-		productPriceError: ""
+		productPriceError: "",
 	});
 
 	const decodeToken = (token) => {
@@ -142,19 +141,19 @@ const Home = () => {
 			firstNameError: "",
 			lastNameError: "",
 			phoneNumberError: "",
-			emailError: ""
+			emailError: "",
 		});
-	
+
 		// Basic validation with individual error messages
 		let errors = {};
 		if (!newClient.firstName) errors.firstNameError = "First name is required.";
 		if (!newClient.lastName) errors.lastNameError = "Last name is required.";
 		const phoneRegex = /^\d+$/;
-if (!newClient.phone) {
-    errors.phoneNumberError = "Phone number is required.";
-} else if (!phoneRegex.test(newClient.phone)) {
-    errors.phoneNumberError = "Invalid phone number format.";
-}
+		if (!newClient.phone) {
+			errors.phoneNumberError = "Phone number is required.";
+		} else if (!phoneRegex.test(newClient.phone)) {
+			errors.phoneNumberError = "Invalid phone number format.";
+		}
 
 		if (!newClient.email) {
 			errors.emailError = "Email is required.";
@@ -164,7 +163,7 @@ if (!newClient.phone) {
 				errors.emailError = "Invalid email format.";
 			}
 		}
-	
+
 		if (Object.keys(errors).length > 0) {
 			setClientErrors(errors);
 			return;
@@ -184,10 +183,10 @@ if (!newClient.phone) {
 			);
 			console.log(response.data);
 			setClientSuccessMessage("Client added successfully!");
-        setNewClient({ firstName: "", lastName: "", phoneNumber: "", email: "" });
-    } catch (error) {
-        setClientErrorMessage("Failed to add client. Please try again.");
-    }
+			setNewClient({ firstName: "", lastName: "", phoneNumber: "", email: "" });
+		} catch (error) {
+			setClientErrorMessage("Failed to add client. Please try again.");
+		}
 	};
 
 	const handleOrderChange = (e) => {
@@ -264,18 +263,20 @@ if (!newClient.phone) {
 		// Reset messages
 		setProductErrors({
 			productNameError: "",
-			productPriceError: ""
+			productPriceError: "",
 		});
-	
+
 		// Basic validation with individual error messages
 		let errors = {};
-		if (!newProduct.productName) errors.productNameError = "Product name is required.";
+		if (!newProduct.productName)
+			errors.productNameError = "Product name is required.";
 		if (!newProduct.productPrice) {
 			errors.productPriceError = "Product price is required.";
 		} else if (isNaN(newProduct.productPrice) || newProduct.productPrice <= 0) {
-			errors.productPriceError = "Invalid product price. Price must be a positive number.";
+			errors.productPriceError =
+				"Invalid product price. Price must be a positive number.";
 		}
-	
+
 		if (Object.keys(errors).length > 0) {
 			setProductErrors(errors);
 			return;
@@ -335,7 +336,11 @@ if (!newClient.phone) {
 										value={newProduct.productName}
 										onChange={handleProductChange}
 									/>
-									{productErrors.productNameError && <div className="error-message">{productErrors.productNameError}</div>}
+									{productErrors.productNameError && (
+										<div className="error-message">
+											{productErrors.productNameError}
+										</div>
+									)}
 									<input
 										type="text"
 										name="productPrice"
@@ -343,12 +348,22 @@ if (!newClient.phone) {
 										value={newProduct.productPrice}
 										onChange={handleProductChange}
 									/>
-									{productErrors.productPriceError && <div className="error-message">{productErrors.productPriceError}</div>}
+									{productErrors.productPriceError && (
+										<div className="error-message">
+											{productErrors.productPriceError}
+										</div>
+									)}
 									<button type="submit" className="button mt-20">
 										Add Product
 									</button>
-									{productSuccessMessage && <div className="success-message">{productSuccessMessage}</div>}
-    {productSuccessMessage && <div className="error-message">{productErrorMessage}</div>}
+									{productSuccessMessage && (
+										<div className="success-message">
+											{productSuccessMessage}
+										</div>
+									)}
+									{productSuccessMessage && (
+										<div className="error-message">{productErrorMessage}</div>
+									)}
 								</form>
 							</div>
 							<div className="record-form">
@@ -361,7 +376,11 @@ if (!newClient.phone) {
 										value={newClient.firstName}
 										onChange={handleNewClientChange}
 									/>
-									{clientErrors.firstNameError && <div className="error-message">{clientErrors.firstNameError}</div>}
+									{clientErrors.firstNameError && (
+										<div className="error-message">
+											{clientErrors.firstNameError}
+										</div>
+									)}
 									<input
 										type="text"
 										name="lastName"
@@ -369,7 +388,11 @@ if (!newClient.phone) {
 										value={newClient.lastName}
 										onChange={handleNewClientChange}
 									/>
-									{clientErrors.lastNameError && <div className="error-message">{clientErrors.lastNameError}</div>}
+									{clientErrors.lastNameError && (
+										<div className="error-message">
+											{clientErrors.lastNameError}
+										</div>
+									)}
 									<input
 										type="text"
 										name="phone" // Make sure this matches the state key
@@ -377,7 +400,11 @@ if (!newClient.phone) {
 										value={newClient.phone} // Ensure this is bound to the state
 										onChange={handleNewClientChange}
 									/>
-									{clientErrors.phoneNumberError && <div className="error-message">{clientErrors.phoneNumberError}</div>}
+									{clientErrors.phoneNumberError && (
+										<div className="error-message">
+											{clientErrors.phoneNumberError}
+										</div>
+									)}
 									<input
 										type="email"
 										name="email"
@@ -385,12 +412,22 @@ if (!newClient.phone) {
 										value={newClient.email}
 										onChange={handleNewClientChange}
 									/>
-									{clientErrors.emailError && <div className="error-message">{clientErrors.emailError}</div>}
+									{clientErrors.emailError && (
+										<div className="error-message">
+											{clientErrors.emailError}
+										</div>
+									)}
 									<button type="submit" className="button mt-20">
 										Add Client
 									</button>
-									{clientSuccessMessage && <div className="success-message">{clientSuccessMessage}</div>}
-    {clientErrorMessage && <div className="error-message">{clientErrorMessage}</div>}
+									{clientSuccessMessage && (
+										<div className="success-message">
+											{clientSuccessMessage}
+										</div>
+									)}
+									{clientErrorMessage && (
+										<div className="error-message">{clientErrorMessage}</div>
+									)}
 								</form>
 							</div>
 							<div className="record-form">

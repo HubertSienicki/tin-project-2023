@@ -10,14 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="static copy of JsonSchema adjustments">
-      <change afterPath="$PROJECT_DIR$/../ClientService/ClientService/Model/DTOs/ClientPOST.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/DataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/DataTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/assets/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/assets/styles/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientService/ClientService/Controllers/ClientController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientService/ClientService/Controllers/ClientController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientService/ClientService/Repository/ClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientService/ClientService/Repository/ClientRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ClientService/ClientService/Repository/Interfaces/IClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientService/ClientService/Repository/Interfaces/IClientRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Controllers/OrderDetailsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsPut.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Model/DTOs/OrderDetailsPut.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/Interfaces/IOrderDetailsRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/OrderDetailsService/Repository/OrderDetailsRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,34 +44,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.OrderDetailsService: http.executor": "Run",
-    ".NET Launch Settings Profile.OrderDetailsService: https.executor": "Run",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.OrderDetailsService: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.OrderDetailsService: https.executor&quot;: &quot;Run&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "rider.external.source.directories": [
-      "C:\\Users\\kneiv\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\kneiv\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\kneiv\\AppData\\Local\\Symbols\\src"
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\kneiv\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\kneiv\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\kneiv\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.OrderDetailsService: http">
     <configuration name="OrderDetailsService: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/OrderDetailsService/OrderDetailsService.csproj" />
@@ -161,6 +162,7 @@
       <workItem from="1705954382547" duration="1784000" />
       <workItem from="1706012468076" duration="3321000" />
       <workItem from="1706019702771" duration="7396000" />
+      <workItem from="1706036779966" duration="4432000" />
     </task>
     <task id="LOCAL-00001" summary="add models for orderDetails service">
       <option name="closed" value="true" />

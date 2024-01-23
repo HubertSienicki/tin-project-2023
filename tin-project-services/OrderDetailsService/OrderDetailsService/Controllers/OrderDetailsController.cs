@@ -29,24 +29,6 @@ public class OrderDetailsController : ControllerBase
     }
 
     [Authorize(Roles = "Admin, User")]
-    [HttpGet("{orderid:int}")]
-    public Task<IActionResult> GetOrderDetailsByIdAsync(int orderid)
-    {
-        var orderDetails = _orderDetailsRepository.GetOrderDetailsByIdAsync(orderid);
-        return Task.FromResult<IActionResult>(Ok(orderDetails.Result));
-    }
-
-    [Authorize(Roles = "Admin, User")]
-    [HttpGet("product/{productid:int}")]
-    public Task<IActionResult> GetOrderDetailsByProductIdAsync(int productid)
-    {
-        var orderDetails = _orderDetailsRepository.GetOrderDetailsByProductIdAsync(productid);
-        return orderDetails.Result != null && !orderDetails.Result.Any()
-            ? Task.FromResult<IActionResult>(NotFound("No orders found for this given product id"))
-            : Task.FromResult<IActionResult>(Ok(orderDetails.Result));
-    }
-
-    [Authorize(Roles = "Admin, User")]
     [HttpPost("create")]
     public Task<IActionResult> CreateOrderDetailsAsync([FromBody] OrderDetailsPost orderDetailsPost)
     {
@@ -68,6 +50,20 @@ public class OrderDetailsController : ControllerBase
         return orderDetails.Result
             ? Task.FromResult<IActionResult>(Ok("Order details deleted"))
             : Task.FromResult<IActionResult>(BadRequest("Order details could not be deleted"));
+    }
+    
+    [Authorize(Roles = "Admin")]
+    [HttpPut("update/{orderId:int}")]
+    public Task<IActionResult> UpdateOrderDetailsAsync(int orderId, OrderDetailsPut orderDetailsPut)
+    {
+        // validate json schema
+        var validationResult = _orderDetailsService.ValidateJsonSchema(orderDetailsPut, "PUT");
+        if (!validationResult.Item1) return Task.FromResult<IActionResult>(BadRequest(validationResult.Item2));
+
+        var orderDetails = _orderDetailsRepository.UpdateOrderDetailsAsync(orderId, orderDetailsPut);
+        return orderDetails.Result == null
+            ? Task.FromResult<IActionResult>(BadRequest("Order details could not be updated"))
+            : Task.FromResult<IActionResult>(Ok(orderDetails.Result));
     }
 
     [HttpGet("test")]
