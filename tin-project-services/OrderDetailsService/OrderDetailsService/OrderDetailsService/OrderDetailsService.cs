@@ -40,7 +40,7 @@ public class OrderDetailsService : IOrderDetailsService
 
     private static string ReadSchema(string schemaPrefix)
     {
-        var schemaFilePath = Path.Combine("/app", "JsonSchemas", $"{schemaPrefix}.json");
+        var schemaFilePath = Path.Combine("/app", "Model/DTOs/JsonSchemas", $"{schemaPrefix}.json");
         if (!File.Exists(schemaFilePath))
         {
             Console.WriteLine($"Schema file not found: {schemaFilePath}");
@@ -55,5 +55,6 @@ public class OrderDetailsService : IOrderDetailsService
         reader.Close();
         return sb.ToString();
     }
+
 
 }
