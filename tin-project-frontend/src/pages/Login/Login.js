@@ -21,7 +21,7 @@ const Login = () => {
 		if (role === "Admin") {
 			navigate("/dashboard");
 		} else if (role === "User") {
-			navigate("/home");
+			navigate("/");
 		}
 	};
 
@@ -50,16 +50,16 @@ const Login = () => {
 			});
 
 			if (response.status === 200) {
-				sessionStorage.setItem("token", response.data.token); // Save the token to session storage
+				// Save token to session storage
+				sessionStorage.setItem("token", response.data.token); 
 				// In your handleSubmit function, after saving the token:
 				const payload = decodeToken(response.data.token);
-				console.log(payload); // Check what's inside the payload
+
 
 				// Access the role using the full key
 				const roleKey =
 					"http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
 				const role = payload[roleKey];
-				console.log("Role:", role); // Check the role
 				navigateBasedOnRole(role);
 			}
 		} catch (error) {
