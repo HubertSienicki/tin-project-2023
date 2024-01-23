@@ -1,4 +1,6 @@
-﻿using ClientService.Repository.Interfaces;
+﻿using ClientService.Model;
+using ClientService.Model.DTOs;
+using ClientService.Repository.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,5 +23,14 @@ public class ClientController : ControllerBase
     {
         var clients = _clientRepository.GetClientsAsync();
         return Task.FromResult<IActionResult>(Ok(clients.Result));
+    }
+    [Authorize (Roles = "Admin, User")]
+    [HttpPost("/add")]
+    public Task<IActionResult> AddClientAsync([FromBody] ClientPOST clientPost)
+    {
+        var createdClient = _clientRepository.AddClientAsync(clientPost);
+        return createdClient.Result == null
+            ? Task.FromResult<IActionResult>(BadRequest("Client could not be created"))
+            : Task.FromResult<IActionResult>(Ok(createdClient.Result));
     }
 }

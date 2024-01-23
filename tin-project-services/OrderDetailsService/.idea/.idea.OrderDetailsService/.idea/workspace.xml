@@ -10,11 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9dbf20a-ecea-4032-bf9a-87e01958fa0f" name="Changes" comment="static copy of JsonSchema adjustments">
+      <change afterPath="$PROJECT_DIR$/../ClientService/ClientService/Model/DTOs/ClientPOST.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/DataTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Dashbord/DataTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/pages/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../tin-project-frontend/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../tin-project-frontend/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientService/ClientService/Controllers/ClientController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientService/ClientService/Controllers/ClientController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientService/ClientService/Repository/ClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientService/ClientService/Repository/ClientRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ClientService/ClientService/Repository/Interfaces/IClientRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ClientService/ClientService/Repository/Interfaces/IClientRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OrderDetailsService/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/.idea/.idea.OrderService/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../OrderService/OrderService/Controllers/OrderController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../OrderService/OrderService/Controllers/OrderController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +160,7 @@
       <workItem from="1705951395088" duration="67000" />
       <workItem from="1705954382547" duration="1784000" />
       <workItem from="1706012468076" duration="3321000" />
-      <workItem from="1706019702771" duration="7195000" />
+      <workItem from="1706019702771" duration="7396000" />
     </task>
     <task id="LOCAL-00001" summary="add models for orderDetails service">
       <option name="closed" value="true" />

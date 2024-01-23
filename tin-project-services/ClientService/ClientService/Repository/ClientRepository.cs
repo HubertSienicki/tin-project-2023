@@ -1,4 +1,5 @@
 ﻿using ClientService.Model;
+using ClientService.Model.DTOs;
 using ClientService.Repository.Interfaces;
 using MySqlConnector;
 
@@ -38,6 +39,29 @@ public class ClientRepository : IClientRepository
                 clients.Add(client);
             }
             return clients;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    public async Task<ClientPOST> AddClientAsync(ClientPOST clientPost)
+    {
+        await using var connection = new MySqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+
+        try
+        {
+            await connection.OpenAsync();
+            const string sql = "INSERT INTO Clients (first_name, last_name, email, phone) VALUES (@FirstName, @LastName, @Email, @Phone)";
+            var command = new MySqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@FirstName", clientPost.FirstName);
+            command.Parameters.AddWithValue("@LastName", clientPost.LastName);
+            command.Parameters.AddWithValue("@Email", clientPost.Email);
+            command.Parameters.AddWithValue("@Phone", clientPost.Phone);
+            await command.ExecuteNonQueryAsync();
+            return clientPost;
         }
         catch (Exception e)
         {

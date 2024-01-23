@@ -6,9 +6,9 @@ const Dashboard = () => {
 	return (
 		<div className="container">
 			<div className="form-box">
-				<h2 className="form-title">Dashboard</h2>
+				<h2 className="form-title">Dashboard zamówień</h2>
 				<div className="dashboard-content">
-					<p>Glowny dashboard!</p>
+					<p>Tutaj możesz edytować aktualne zamówienia</p>
 					{<DataTable />}
 				</div>
 			</div>

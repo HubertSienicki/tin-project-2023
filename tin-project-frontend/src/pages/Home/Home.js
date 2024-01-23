@@ -13,11 +13,20 @@ const Home = () => {
 	const [products, setProducts] = useState([]);
 	const [clients, setClients] = useState([]);
 	const [userRole, setUserRole] = useState("");
+
+	// new object states
 	const [order, setOrder] = useState({
 		productId: "",
 		clientId: "",
 		quantity: "",
 		comments: "",
+	});
+
+	const [newClient, setNewClient] = useState({
+		firstName: "",
+		lastName: "",
+		phoneNumber: "",
+		email: "",
 	});
 
 	const decodeToken = (token) => {
@@ -94,6 +103,33 @@ const Home = () => {
 		fetchClients();
 	}, []);
 
+	const handleNewClientChange = (e) => {
+		setNewClient({ ...newClient, [e.target.name]: e.target.value });
+	};
+
+	const submitNewClient = async (e) => {
+		e.preventDefault();
+		// Add logic to post new client data to your server
+		const token = sessionStorage.getItem("token");
+
+		try {
+			const response = await axios.post(
+				"http://localhost:5005/add",
+				newClient,
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				}
+			);
+			console.log(response.data);
+			// Handle success (clear form, show message, etc.)
+		} catch (error) {
+			console.error(error);
+			// Handle error
+		}
+	};
+
 	const handleOrderChange = (e) => {
 		setOrder({ ...order, [e.target.name]: e.target.value });
 	};
@@ -160,78 +196,113 @@ const Home = () => {
 
 	return (
 		<div className="container">
-			 {(userRole === "Admin" || userRole === "User") && (
-				  <div className="form-box">
-						<div className="dashboard-container">
-							 <h1 className="form-title">Home</h1>
-							 <div className="data-table">
-								  <h3>Zalogowano</h3>
-								  <p>Rola użytkownika: {username}</p>
-							 </div>
-
-							 <div className="record-form">
-								  <h3>Dodaj zamówienie</h3>
-								  <form onSubmit={submitOrder}>
-							<select
-								name="productId"
-								onChange={handleOrderChange}
-								value={order.productId}
-							>
-								<option value="">Wybierz produkt</option>
-								{products.map((product) => (
-									<option key={product.id} value={product.id}>
-										{product.name}
-									</option>
-								))}
-							</select>
-
-							<select
-								name="clientId"
-								onChange={handleOrderChange}
-								value={order.clientId}
-							>
-								<option value="">Wybierz klienta</option>
-								{clients.map((client) => (
-									<option key={client.id} value={client.id}>
-										{client.firstName} {client.lastName}
-									</option>
-								))}
-							</select>
-
-							<input
-								type="number"
-								name="quantity"
-								placeholder="Ilość"
-								value={order.quantity}
-								onChange={handleOrderChange}
-							/>
-
-							<textarea
-								name="comments"
-								placeholder="Dodatkowe komentarze"
-								value={order.comments}
-								onChange={handleOrderChange}
-							></textarea>
-
-							<button type="submit" className="button mt-20">
-								Add Order
-							</button>
-							{successMessage && (
-								<div className="success-message">{successMessage}</div>
-							)}
-							{errorMessage && (
-								<div className="error-message">{errorMessage}</div>
-							)}
+			{(userRole === "Admin" || userRole === "User") && (
+				<div className="form-box">
+					<div className="dashboard-container">
+						<h1 className="form-title">Home</h1>
+						<div className="data-table">
+							<h3>Zalogowano</h3>
+							<p>Rola użytkownika: {username}</p>
+						</div>
+						<div className="record-form">
+							<h3>Add New Client</h3>
+							<form onSubmit={submitNewClient}>
+								<input
+									type="text"
+									name="firstName"
+									placeholder="First Name"
+									value={newClient.firstName}
+									onChange={handleNewClientChange}
+								/>
+								<input
+									type="text"
+									name="lastName"
+									placeholder="Last Name"
+									value={newClient.lastName}
+									onChange={handleNewClientChange}
+								/>
+								<input
+									type="text"
+									name="phone" // Make sure this matches the state key
+									placeholder="Phone Number"
+									value={newClient.phone} // Ensure this is bound to the state
+									onChange={handleNewClientChange}
+								/>
+								<input
+									type="email"
+									name="email"
+									placeholder="Email Address"
+									value={newClient.email}
+									onChange={handleNewClientChange}
+								/>
+								<button type="submit" className="button mt-20">
+									Add Client
+								</button>
 							</form>
-                        </div>
-                        <button onClick={logout} className="button mt-20">
-                            Logout
-                        </button>
-                    </div>
-                </div>
-            )}
-        </div>
-    );
+						</div>
+						<div className="record-form">
+							<h3>Dodaj zamówienie</h3>
+							<form onSubmit={submitOrder}>
+								<select
+									name="productId"
+									onChange={handleOrderChange}
+									value={order.productId}
+								>
+									<option value="">Wybierz produkt</option>
+									{products.map((product) => (
+										<option key={product.id} value={product.id}>
+											{product.name}
+										</option>
+									))}
+								</select>
+
+								<select
+									name="clientId"
+									onChange={handleOrderChange}
+									value={order.clientId}
+								>
+									<option value="">Wybierz klienta</option>
+									{clients.map((client) => (
+										<option key={client.id} value={client.id}>
+											{client.firstName} {client.lastName}
+										</option>
+									))}
+								</select>
+
+								<input
+									type="number"
+									name="quantity"
+									placeholder="Ilość"
+									value={order.quantity}
+									onChange={handleOrderChange}
+								/>
+
+								<textarea
+									name="comments"
+									placeholder="Dodatkowe komentarze"
+									value={order.comments}
+									onChange={handleOrderChange}
+								></textarea>
+
+								<button type="submit" className="button mt-20">
+									Add Order
+								</button>
+								{successMessage && (
+									<div className="success-message">{successMessage}</div>
+								)}
+								{errorMessage && (
+									<div className="error-message">{errorMessage}</div>
+								)}
+							</form>
+						</div>
+						<button onClick={logout} className="button mt-20">
+							Logout
+						</button>
+					</div>
+				</div>
+			)}
+		</div>
+	);
 };
 
 export default Home;
